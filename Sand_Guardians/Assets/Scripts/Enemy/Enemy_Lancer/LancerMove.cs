@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class PornMove : MonoBehaviour
+    public class LancerMove : MonoBehaviour
     {
 
         [SerializeField] private EnemyStatus status;
@@ -36,6 +36,7 @@ namespace Enemy
         // Update is called once per frame
         void Update()
         {
+            //メソッド呼び出し
             Move();
             Angle();
         }
@@ -49,6 +50,11 @@ namespace Enemy
         {
             // Enemyが移動する処理
             transform.position += moveDir.normalized * status.speed * Time.deltaTime;
+
+            //if ()
+            //{
+
+            //}
         }
 
         /// <summary>
@@ -61,7 +67,7 @@ namespace Enemy
             float angle = (Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg) - 90.0f;
 
             // Enemyの位置によって向きを変更する
-            transform.rotation = Quaternion.Euler(0f,0f,angle);
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
         }
     }

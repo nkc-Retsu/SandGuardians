@@ -12,13 +12,6 @@ namespace Enemy
         // ステータスを持っている処理を取得
         [SerializeField] private EnemyStatus status;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-            // コンポーネント取得
-            //status = GetComponent<EnemyStatus>();
-        }
-
 
         /// <summary>
         /// HPの基本処理

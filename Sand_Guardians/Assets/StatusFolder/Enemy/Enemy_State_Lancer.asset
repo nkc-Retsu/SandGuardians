@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c8a0c2f203e614aa63701c890549d0, type: 3}
   m_Name: Enemy_State_Lancer
   m_EditorClassIdentifier: 
-  hp: 0
-  attackPower: 0
-  speed: 0
+  hp: 10
+  attackPower: 10
+  speed: 5

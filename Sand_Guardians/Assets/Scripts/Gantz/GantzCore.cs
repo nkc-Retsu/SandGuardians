@@ -15,16 +15,17 @@ public class GantzCore : MonoBehaviour,IE2GAttack
     /// </summary>
     private void HpDiretor()
     {
-        if (0 <= hp) Debug.Log("シーン遷移");
+        if (hp <= 0) Debug.Log("シーン遷移");
     }
 
     /// <summary>
-    /// GantzがEnemyに攻撃するインターフェース処理
+    /// EnemyがGantzに攻撃するインターフェース処理
     /// </summary>
     /// <param name="damage"></param>
     public void ToGantzAttack(int damage)
-    {
-        hp = -damage;
+    {        
+        hp -= damage;
+        Debug.Log(hp);
     }
 
 }

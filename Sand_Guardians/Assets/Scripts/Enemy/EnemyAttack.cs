@@ -12,18 +12,18 @@ namespace Enemy
 
         [SerializeField] private EnemyStatus status;
 
-        void Start()
-        {
-            //status = GetComponent<EnemyStatus>();
-        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            
             var e2GAttack = collision.gameObject.GetComponent<IE2GAttack>();
 
             if(e2GAttack != null)
             {
+                
                 e2GAttack.ToGantzAttack(status.attackPower);
+                Debug.Log("GantzÇ…ìñÇΩÇ¡ÇΩÅI");
+                Destroy(gameObject);
             }
         }
     }

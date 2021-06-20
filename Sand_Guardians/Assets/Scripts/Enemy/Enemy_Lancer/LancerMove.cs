@@ -6,16 +6,26 @@ namespace Enemy
 {
     public class LancerMove : MonoBehaviour
     {
+        // EnemyLancerの動き処理
 
+
+        // 取得用変数
         [SerializeField] private EnemyStatus status;
         [SerializeField] private GameObject gantz;
 
 
-        // 移動処理用変数
-        private Vector3 enemyPos;
-        private Vector3 gantzPos;
-        private Vector3 moveDir;
+        // 調整用変数
+        [SerializeField, Tooltip("動き出すまでの時間")] private float timeUp;
+        [SerializeField, Tooltip("止まる位置")] 　　　　private float movePos;
 
+
+        // 移動処理用変数
+        private Vector3 enemyPos;   // Enemyの位置変数
+        private Vector3 gantzPos;   // Gantzの位置変数
+        private Vector3 moveDir;    // EnemyからGantzへのベクトル変数
+        private float distance_X;   // EnemyからGantzまでのx座標
+        private float distance_Y;　 // EnemyからGantzまでのy座標
+        private float time;         // 時間計測用変数
 
 
         // Start is called before the first frame update
@@ -48,13 +58,31 @@ namespace Enemy
         /// </summary>
         private void Move()
         {
+            // Enemyの位置を取得
+            enemyPos = transform.position;
+
+            // EnemyからGantzまでの距離を取得
+            distance_X = gantzPos.x - enemyPos.x;
+            distance_Y = gantzPos.y - enemyPos.y;
+
+
             // Enemyが移動する処理
             transform.position += moveDir.normalized * status.speed * Time.deltaTime;
 
-            //if ()
-            //{
 
-            //}
+            // Gantzの近くになると停止する
+            if (Mathf.Abs(distance_X) <= movePos || Mathf.Abs(distance_Y) <= movePos)
+            {
+                // 移動速度を0にする
+                status.speed = 0f;
+
+                // 時間計測開始
+                time += Time.deltaTime;
+            }
+
+            // 時間で動き出す
+            if (time > timeUp) status.speed = 5f;
+
         }
 
         /// <summary>

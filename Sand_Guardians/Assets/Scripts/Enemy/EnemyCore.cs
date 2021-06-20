@@ -9,7 +9,7 @@ namespace Enemy
     {
         // Enemyの基本処理
 
-        // ステータスを持っている処理を取得
+        // ステータス取得用変数
         [SerializeField] private EnemyStatus status;
 
 

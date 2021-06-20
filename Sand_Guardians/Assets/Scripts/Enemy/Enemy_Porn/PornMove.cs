@@ -7,6 +7,9 @@ namespace Enemy
     public class PornMove : MonoBehaviour
     {
 
+        // EnemyPorn‚Ì“®‚«ˆ—
+
+        // æ“¾—p•Ï”
         [SerializeField] private EnemyStatus status;
         [SerializeField] private GameObject gantz;
 

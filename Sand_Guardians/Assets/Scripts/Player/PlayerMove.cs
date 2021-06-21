@@ -15,8 +15,13 @@ namespace Player
 
 
         [SerializeField] float speed = 5f;
-        [SerializeField] private float a;
-        private int b = 0;
+        [SerializeField] private float posValue;
+        private int posState = 0;
+
+        private float stateDistance = 0;
+
+        Vector3 moveVec;
+        float angle;
 
         void Start()
         {
@@ -31,7 +36,7 @@ namespace Player
 
             for (int i = 0; i < turnPoints.Count - 1; ++i)
             {
-                Debug.Log(turnPointDistances[i]);
+                //Debug.Log(turnPointDistances[i]);
             }
 
         }
@@ -39,26 +44,23 @@ namespace Player
         void Update()
         {
 
-            a += inputer.Move() + speed * Time.deltaTime;
+            moveVec = turnPoints[posState].transform.position - turnPoints[posState + 1].transform.position;
+            angle = Mathf.Atan2(moveVec.y, moveVec.x) * Mathf.Rad2Deg + 180;
+            transform.localEulerAngles = new Vector3(0, 0, angle);
 
-            a = Mathf.Clamp(a, 0, 3);
-            b = (int)a;
-            b = Mathf.Clamp(b, 0, 2);
-            transform.position= Vector3.Lerp(turnPoints[b].transform.position, turnPoints[b+1].transform.position, a-b);
+            // turnPoint“¯Žm‚Ì‹——£
+            stateDistance = (turnPoints[posState].transform.position - turnPoints[posState + 1].transform.position).magnitude;
+
+            // stateDistance‚ÅŠ„‚é‚±‚Æ‚ÅturnPoint‚Ì‹——£‚ª•Ï‚í‚Á‚Ä‚à‘¬“x‚ªˆê’è‚É
+            posValue += inputer.Move() * speed / stateDistance * Time.deltaTime;
+
+            // ’l‚Ì§ŒÀ
+            posValue = Mathf.Clamp(posValue, 0, 3);
+            posState = (int)posValue; // posValue‚Ì®”•”
+            posState = Mathf.Clamp(posState, 0, 2);
+            transform.position= Vector3.Lerp(turnPoints[posState].transform.position, turnPoints[posState+1].transform.position, posValue-posState);
 
 
-            //switch (b)
-            //{
-            //    case 0:
-            //        speed = turnPointDistances[b];
-            //        break;
-            //    case 1:
-            //        break;
-            //    case 2:
-            //        break;
-            //    default:
-            //        break;
-            //}
 
         }
     }

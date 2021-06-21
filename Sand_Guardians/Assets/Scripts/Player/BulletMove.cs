@@ -1,0 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Bridge;
+
+public class BulletMove : MonoBehaviour
+{
+    [SerializeField] float speed = 5f;
+    void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        transform.position += transform.up.normalized * speed * Time.deltaTime;
+    }
+}

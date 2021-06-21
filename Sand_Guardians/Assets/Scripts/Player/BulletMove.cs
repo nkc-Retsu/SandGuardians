@@ -6,10 +6,6 @@ using Bridge;
 public class BulletMove : MonoBehaviour
 {
     [SerializeField] float speed = 5f;
-    void Start()
-    {
-        
-    }
 
     void Update()
     {

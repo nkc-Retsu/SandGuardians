@@ -15,7 +15,7 @@ namespace Player
 
 
         [SerializeField] float speed = 5f;
-        [SerializeField] private float posValue;
+        [SerializeField,Tooltip("初期位置\n(整数値がカドの位置)")] private float posValue;
         private int posState = 0;
 
         private float stateDistance = 0;
@@ -32,11 +32,6 @@ namespace Player
             for (int i = 0; i < turnPoints.Count - 1; ++i)
             {
                 turnPointDistances[i] = (turnPoints[i].transform.position - turnPoints[i + 1].transform.position).magnitude;
-            }
-
-            for (int i = 0; i < turnPoints.Count - 1; ++i)
-            {
-                //Debug.Log(turnPointDistances[i]);
             }
 
         }

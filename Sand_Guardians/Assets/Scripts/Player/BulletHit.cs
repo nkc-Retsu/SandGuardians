@@ -5,19 +5,8 @@ using Bridge;
 
 public class BulletHit : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Destroy(gameObject);
 
         IP2EAttack p2EAttack = col.gameObject.GetComponent<IP2EAttack>();
         if (p2EAttack == null)
@@ -28,6 +17,8 @@ public class BulletHit : MonoBehaviour
         {
             p2EAttack.ToEnemyAttack(10);
         }
+
+        Destroy(gameObject);
 
     }
 }

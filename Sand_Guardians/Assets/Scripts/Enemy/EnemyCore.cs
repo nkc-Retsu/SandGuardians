@@ -12,13 +12,22 @@ namespace Enemy
         // ステータス取得用変数
         [SerializeField] private EnemyStatus status;
 
+        private int hp;
+
+        private void Start()
+        {
+            this.hp = status.hp;
+        }
 
         /// <summary>
         /// HPの基本処理
         /// </summary>
         private void HpDirector()
         {
-            if (status.hp <= 0) Destroy(gameObject);
+            if (this.hp <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
 
         /// <summary>
@@ -27,7 +36,9 @@ namespace Enemy
         /// <param name="damage"></param>
         public void ToEnemyAttack(int damage)
         {
-            status.hp = -damage;
+            this.hp -= damage;
+            Debug.Log(hp);
+            HpDirector();
         }
 
         

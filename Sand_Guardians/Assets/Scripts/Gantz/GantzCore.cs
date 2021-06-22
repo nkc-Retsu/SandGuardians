@@ -25,7 +25,7 @@ public class GantzCore : MonoBehaviour,IE2GAttack
     public void ToGantzAttack(int damage)
     {        
         hp -= damage;
-        Debug.Log(hp);
+        HpDiretor();
     }
 
 }

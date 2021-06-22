@@ -26,6 +26,7 @@ namespace Enemy
         private float distance_X;   // EnemyからGantzまでのx座標
         private float distance_Y;　 // EnemyからGantzまでのy座標
         private float time;         // 時間計測用変数
+        private float speed;
 
 
         // Start is called before the first frame update
@@ -33,6 +34,8 @@ namespace Enemy
         {
             // Gantzのオブジェクトを取得
             gantz = GameObject.Find("Gantz");
+
+            this.speed = status.speed;
 
             // 移動用の情報を取得
             enemyPos = transform.position;
@@ -67,21 +70,21 @@ namespace Enemy
 
 
             // Enemyが移動する処理
-            transform.position += moveDir.normalized * status.speed * Time.deltaTime;
+            transform.position += moveDir.normalized * this.speed * Time.deltaTime;
 
 
             // Gantzの近くになると停止する
             if (Mathf.Abs(distance_X) <= movePos || Mathf.Abs(distance_Y) <= movePos)
             {
                 // 移動速度を0にする
-                status.speed = 0f;
+                this.speed = 0f;
 
                 // 時間計測開始
                 time += Time.deltaTime;
             }
 
             // 時間で動き出す
-            if (time > timeUp) status.speed = 5f;
+            if (time > timeUp) this.speed = 5f;
 
         }
 

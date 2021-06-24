@@ -9,12 +9,12 @@ namespace Player
     {
         IInputer inputer;
 
-        [SerializeField] GameObject spreadBullet;
-        private Vector3 offsetPos;
-        private float offsetRate = 0.2f;
+        [SerializeField] GameObject spreadBullet; // ŠgU’e
+        private Vector3 offsetPos; // ”­ËˆÊ’u
+        private float offsetRate = 0.2f; // ”­ËˆÊ’u’²®—p
 
-        [SerializeField] private float angle = 0;
-        [SerializeField] private int shotCount = 10;
+        [SerializeField] private float angle = 0; // ”­ËŠp“x
+        [SerializeField] private int shotCount = 11; // ’e”
 
         void Start()
         {

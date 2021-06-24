@@ -21,6 +21,7 @@ public class ScoreDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // メソッド呼び出し
         Score();
     }
 

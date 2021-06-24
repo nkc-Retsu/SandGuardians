@@ -31,8 +31,8 @@ namespace Enemy
             // 体力が0になったら消滅
             if (this.hp <= 0)
             {
+                // スコアにポイントを加算
                 ScoreDirector.scorePoint += status.enemyPoint;
-                Debug.Log(ScoreDirector.scorePoint);
                 Destroy(gameObject);
             }
         }

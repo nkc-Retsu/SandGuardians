@@ -52,4 +52,4 @@ MonoBehaviour:
   - {fileID: 6363996045309174896, guid: 75dd6e7d9bd99cc4ca40ab30de4c9bcc, type: 3}
   - {fileID: 6168665716233671391, guid: 77f0b633178002742b32ef9a14965bcc, type: 3}
   - {fileID: 5853643504263728836, guid: 6f74ae876496d1b4d8ca9ab2ff2c1dca, type: 3}
-  spawnLevel: 2
+  spawnLevel: 1

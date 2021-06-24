@@ -11,6 +11,7 @@ namespace Enemy
         // Enemyを生成する処理
 
         //[Space(3000)]
+
         /// <summary>
         /// 出現するEnemyの種類を管理するenum
         /// </summary>
@@ -36,8 +37,8 @@ namespace Enemy
 
 
         // 時間変数
-        private float time;// 時間計測用変数
-        private float timeCount = 5;// インターバル用変数
+        private float time = 0;         // 時間計測用変数
+        private float timeCount = 5;    // インターバル用変数
 
 
 

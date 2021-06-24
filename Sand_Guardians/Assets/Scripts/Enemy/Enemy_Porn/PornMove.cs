@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+#pragma warning disable 649
 namespace Enemy
 {
     public class PornMove : MonoBehaviour
@@ -15,9 +17,10 @@ namespace Enemy
 
 
         // 移動処理用変数
-        private Vector3 enemyPos;
-        private Vector3 gantzPos;
-        private Vector3 moveDir;
+        private Vector3 enemyPos;   // Enemyの位置
+        private Vector3 gantzPos;   // Gantzの位置
+        private Vector3 moveDir;    // 方向ベクトル
+        private float speed;        // Enemyのspeed
 
 
 
@@ -26,6 +29,9 @@ namespace Enemy
         {
             // Gantzのオブジェクトを取得
             gantz = GameObject.Find("Gantz");
+
+            // ステータスのspeedを代入
+            this.speed = status.speed;
 
             // 移動用の情報を取得
             enemyPos = transform.position;
@@ -51,7 +57,7 @@ namespace Enemy
         private void Move()
         {
             // Enemyが移動する処理
-            transform.position += moveDir.normalized * status.speed * Time.deltaTime;
+            transform.position += moveDir.normalized * this.speed * Time.deltaTime;
         }
 
         /// <summary>

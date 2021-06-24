@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#pragma warning disable 649
 public class GantzCore : MonoBehaviour,IE2GAttack
 {
     // ガンツの基本処理
 
-    [SerializeField] private int hp = 100;
+    [SerializeField,Tooltip("体力")] private int hp = 100;
 
 
     /// <summary>
@@ -15,6 +16,7 @@ public class GantzCore : MonoBehaviour,IE2GAttack
     /// </summary>
     private void HpDiretor()
     {
+        // 体力が0になったらシーン遷移
         if (hp <= 0) Debug.Log("シーン遷移");
     }
 

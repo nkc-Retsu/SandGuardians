@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Enemy_State_Lancer
   m_EditorClassIdentifier: 
   hp: 50
-  attackPower: 10
+  attackPower: 20
   speed: 5
+  enemyPoint: 1200

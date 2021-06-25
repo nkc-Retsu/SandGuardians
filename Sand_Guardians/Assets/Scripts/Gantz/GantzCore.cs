@@ -50,7 +50,7 @@ public class GantzCore : MonoBehaviour,IE2GAttack
     private void HpDiretor()
     {
         // ‘Ì—Í‚ª0‚É‚È‚Á‚½‚çƒV[ƒ“‘JˆÚ
-        if (gantzHp <= 0) FadeManager.Instance.LoadScene("ScoreScnen",0.5f);
+        if (gantzHp <= 0) FadeManager.Instance.LoadScene("ScoreScene",0.5f);
     }
 
     /// <summary>

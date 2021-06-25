@@ -77,7 +77,7 @@ MonoBehaviour:
   status: {fileID: 11400000, guid: 6f1f7de31b7070341bac61257356a939, type: 2}
   gantz: {fileID: 8571648612604510812, guid: 99c2b393f3a3fd44b8aa449eca0018c5, type: 3}
   timeUp: 2
-  movePos: 1
+  movePos: 3
 --- !u!212 &9036642124946020028
 SpriteRenderer:
   m_ObjectHideFlags: 0

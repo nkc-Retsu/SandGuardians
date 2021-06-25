@@ -10,13 +10,14 @@ namespace Player
         {
             Attack();
             Move();
-            SpecialAttack();
+            SpecialAttack_Red();
+            SpecialAttack_Blue();
         }
 
 
         public bool Attack()
         {
-            return Input.GetKeyDown(KeyCode.Z);
+            return Input.GetKeyDown(KeyCode.X);
         }
 
         public float Move()
@@ -24,9 +25,14 @@ namespace Player
             return Input.GetAxisRaw("Horizontal");
         }
 
-        public bool SpecialAttack()
+        public bool SpecialAttack_Red()
         {
-            return Input.GetKeyDown(KeyCode.X);
+            return Input.GetKeyDown(KeyCode.Z);
+        }
+
+        public bool SpecialAttack_Blue()
+        {
+            return Input.GetKeyDown(KeyCode.C);
         }
     }
 }

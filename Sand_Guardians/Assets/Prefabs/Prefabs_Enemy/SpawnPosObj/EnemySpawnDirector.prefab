@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1428595793254755840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1428595793254755842}
+  - component: {fileID: 1428595793254755843}
+  m_Layer: 0
+  m_Name: EnemySpawnDirector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1428595793254755842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428595793254755840}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1428595793254755843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428595793254755840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ddcbf6caf1ccd44a924cadb19104652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPorn: {fileID: 2662878372868320741, guid: 518015968b804474b94557d25a13fb92, type: 3}
+  enemyLancer: {fileID: 2377385658679274002, guid: cd723c136f55bbc4faaef0320bf8dcc8, type: 3}
+  enemyKnight: {fileID: 6735750078556478719, guid: 6f91dbcd0c97df342b5ca5fc703b4069, type: 3}
+  lerpObj:
+  - {fileID: 5853643504263728836, guid: 6f74ae876496d1b4d8ca9ab2ff2c1dca, type: 3}
+  - {fileID: 8559861468622311193, guid: c54a4652c052e714eb3e248e6d67446d, type: 3}
+  - {fileID: 6363996045309174896, guid: 75dd6e7d9bd99cc4ca40ab30de4c9bcc, type: 3}
+  - {fileID: 6168665716233671391, guid: 77f0b633178002742b32ef9a14965bcc, type: 3}
+  - {fileID: 5853643504263728836, guid: 6f74ae876496d1b4d8ca9ab2ff2c1dca, type: 3}
+  spawnLevel: 1

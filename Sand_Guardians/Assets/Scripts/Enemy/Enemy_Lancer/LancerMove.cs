@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+#pragma warning disable 649
 namespace Enemy
 {
     public class LancerMove : MonoBehaviour
@@ -26,7 +28,8 @@ namespace Enemy
         private float distance_X;   // EnemyからGantzまでのx座標
         private float distance_Y;　 // EnemyからGantzまでのy座標
         private float time;         // 時間計測用変数
-        private float speed;
+        private float speed;        // Enemyのスピード
+
 
 
         // Start is called before the first frame update
@@ -35,6 +38,7 @@ namespace Enemy
             // Gantzのオブジェクトを取得
             gantz = GameObject.Find("Gantz");
 
+            // ステータスのspeedを代入
             this.speed = status.speed;
 
             // 移動用の情報を取得
@@ -74,7 +78,7 @@ namespace Enemy
 
 
             // Gantzの近くになると停止する
-            if (Mathf.Abs(distance_X) <= movePos || Mathf.Abs(distance_Y) <= movePos)
+            if (Mathf.Abs(distance_X) <= movePos && Mathf.Abs(distance_Y) <= movePos)
             {
                 // 移動速度を0にする
                 this.speed = 0f;

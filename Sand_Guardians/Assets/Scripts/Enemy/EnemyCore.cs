@@ -12,10 +12,13 @@ namespace Enemy
         // ステータス取得用変数
         [SerializeField] private EnemyStatus status;
 
+        // 代入用hp変数
         private int hp;
+
 
         private void Start()
         {
+            // ステータスのhpを代入
             this.hp = status.hp;
         }
 
@@ -24,8 +27,11 @@ namespace Enemy
         /// </summary>
         private void HpDirector()
         {
+            // 体力が0になったら消滅
             if (this.hp <= 0)
             {
+                // スコアにポイントを加算
+                ScoreDirector.scorePoint += status.enemyPoint;
                 Destroy(gameObject);
             }
         }
@@ -36,8 +42,13 @@ namespace Enemy
         /// <param name="damage"></param>
         public void ToEnemyAttack(int damage)
         {
+            // hpをdamage分減少
             this.hp -= damage;
-            Debug.Log(hp);
+
+            // 倒したEnemyを++していく 
+            ScoreDirector.enemyBreak++;
+
+            // HPメソッド呼び出し
             HpDirector();
         }
 

@@ -5,7 +5,7 @@ using Bridge;
 
 namespace Player
 {
-    public class PlayerSpecialAttack : MonoBehaviour
+    public class PlayerSpecialAttack_Blue : MonoBehaviour
     {
         IInputer inputer;
 
@@ -24,18 +24,18 @@ namespace Player
 
         void Update()
         {
-            if (inputer.SpecialAttack()) SpreadBullet();
+            if (inputer.SpecialAttack_Blue()) SpreadBullet();
         }
-        
+
         private void SpreadBullet()
         {
             offsetPos = transform.up * offsetRate;
             Vector3 rotate = transform.localEulerAngles - new Vector3(0, 0, angle * (shotCount / 2));
 
-            for (int i=0;i<shotCount;++i)
+            for (int i = 0; i < shotCount; ++i)
             {
                 Instantiate(spreadBullet, this.transform.position + offsetPos, Quaternion.Euler(rotate));
-                rotate +=new Vector3(0,0, angle);
+                rotate += new Vector3(0, 0, angle);
             }
         }
     }

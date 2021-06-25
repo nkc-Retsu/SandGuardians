@@ -136,13 +136,14 @@ GameObject:
   - component: {fileID: 32139571}
   - component: {fileID: 32139570}
   - component: {fileID: 32139574}
+  - component: {fileID: 32139575}
   m_Layer: 0
   m_Name: Player_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &32139570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +253,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 7575141074702895236, guid: 97a035c21af69114bb07ca56b2a01e30, type: 3}
+--- !u!114 &32139575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32139569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27d76da0230d1974da8fc01d3da41c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spreadBullet: {fileID: 7575141074702895236, guid: 97a035c21af69114bb07ca56b2a01e30, type: 3}
+  angle: 80
+  shotCount: 11
 --- !u!1 &93466408
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,7 +604,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: c1fe5c46d3e58f0419c2effb3e4bf964, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5754717, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1171,7 +1187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d85ca9fbcae894596eaf9d04c19b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 7575141074702895236, guid: b4ff2bfa22cf36d49b92316640467af1, type: 3}
+  bullet: {fileID: 7575141074702895236, guid: 97a035c21af69114bb07ca56b2a01e30, type: 3}
 --- !u!114 &1934117407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1184,9 +1200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13259d0718514d43873cf05607dfb1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spreadBullet: {fileID: 7575141074702895236, guid: 97a035c21af69114bb07ca56b2a01e30, type: 3}
-  angle: 60
-  shotCount: 11
+  laserBeam: {fileID: 1654135108966143598, guid: 7d7b437bcdaa8e24eb2f9ab1ab23bcf1, type: 3}
 --- !u!1001 &2141213982
 PrefabInstance:
   m_ObjectHideFlags: 0

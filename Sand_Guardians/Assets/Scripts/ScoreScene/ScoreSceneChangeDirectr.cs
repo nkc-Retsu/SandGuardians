@@ -32,7 +32,7 @@ public class ScoreSceneChangeDirectr : MonoBehaviour
     /// </summary>
     private void SceneChage()
     {
-        if (Input.GetKeyDown(KeyCode.Z)) FadeManager.Instance.LoadScene("", 0.5f);
+        if (Input.GetKeyDown(KeyCode.Z)) FadeManager.Instance.LoadScene("GameScene", 0.5f);
         if (Input.GetKeyDown(KeyCode.C)) FadeManager.Instance.LoadScene("TitleScene", 0.5f);
     }
 

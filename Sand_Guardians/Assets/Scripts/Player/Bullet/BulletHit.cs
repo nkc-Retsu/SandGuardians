@@ -9,6 +9,8 @@ public class BulletHit : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
 
+        if (col.gameObject.name == "Gantz") return;
+
         IP2EAttack p2EAttack = col.gameObject.GetComponent<IP2EAttack>();
         if (p2EAttack == null)
         {

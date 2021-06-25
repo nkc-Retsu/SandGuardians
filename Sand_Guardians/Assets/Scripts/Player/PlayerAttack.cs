@@ -12,6 +12,9 @@ namespace Player
         private Vector3 offsetPos;
         private float offsetRate = 0.2f;
 
+        private float timeSecondCounter = 0;
+        [SerializeField] private float attackSpan = 0.2f;
+
         void Start()
         {
             inputer = GetComponent<IInputer>();
@@ -19,7 +22,13 @@ namespace Player
 
         void Update()
         {
-            if(inputer.Attack()) Attack();
+            timeSecondCounter += Time.deltaTime;
+
+            if (timeSecondCounter > attackSpan)
+            {
+                if (inputer.Attack()) Attack();
+                timeSecondCounter = 0;
+            }
 
         }
 

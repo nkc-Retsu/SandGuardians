@@ -13,6 +13,8 @@ public class LaserScaleChange : MonoBehaviour
     [SerializeField] private float scaleChangeTime = 0.5f;
     private float timeCounter2 = 0;
 
+    [SerializeField] float laserLifetime = 0.5f;
+
     void Start()
     {
         
@@ -23,7 +25,7 @@ public class LaserScaleChange : MonoBehaviour
         timeSecondCounter += Time.deltaTime;
         timeCounter2 += Time.deltaTime;
 
-        if (timeCounter2 < 0.5f)
+        if (timeCounter2 < laserLifetime)
         {
             if (timeSecondCounter > scaleChangeTime)
             {

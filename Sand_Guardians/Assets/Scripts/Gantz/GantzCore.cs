@@ -3,11 +3,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#pragma warning disable 649
 public class GantzCore : MonoBehaviour,IE2GAttack
 {
     // ガンツの基本処理
 
-    [SerializeField] private int hp = 100;
+    [SerializeField,Tooltip("体力")] private int gantzHp = 100;
+
+
+    public int GantzHp
+    {
+        get
+        {
+            return gantzHp;
+        }
+        set
+        {
+            gantzHp = value;
+        }
+    }
+
+    private bool damageFlg = false;
+
+    public bool DamageFlg
+    {
+        get
+        {
+            return damageFlg;
+        }
+        set
+        {
+            damageFlg = value;
+        }
+    }
+
 
 
     /// <summary>
@@ -15,7 +44,8 @@ public class GantzCore : MonoBehaviour,IE2GAttack
     /// </summary>
     private void HpDiretor()
     {
-        if (hp <= 0) Debug.Log("シーン遷移");
+        // 体力が0になったらシーン遷移
+        if (gantzHp <= 0) Debug.Log("シーン遷移");
     }
 
     /// <summary>
@@ -24,7 +54,8 @@ public class GantzCore : MonoBehaviour,IE2GAttack
     /// <param name="damage"></param>
     public void ToGantzAttack(int damage)
     {        
-        hp -= damage;
+        gantzHp -= damage;
+        damageFlg = true;
         HpDiretor();
     }
 

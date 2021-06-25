@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+#pragma warning disable 649
 namespace Enemy
 {
     public class KnightMove : MonoBehaviour
@@ -20,8 +22,14 @@ namespace Enemy
         [SerializeField, Tooltip("中心からの距離")] private float radius = 2.0f;
         [SerializeField, Tooltip("中心からの距離")] private float returnSpeed = 0.003f;
 
+        private float speed;
 
-        // Update is called once per frame
+
+        void Start()
+        {
+            this.speed = status.speed;
+        }
+
         void Update()
         {
             // メソッド呼び出し
@@ -38,7 +46,7 @@ namespace Enemy
             this.transform.position = RotateAroundZ(this.center.transform.position, this.angle, this.radius);
 
             // 移動するスピードを設定
-            this.angle -= status.speed;
+            this.angle -= this.speed;
 
             // 中心座標まで向かう
             radius -= returnSpeed;

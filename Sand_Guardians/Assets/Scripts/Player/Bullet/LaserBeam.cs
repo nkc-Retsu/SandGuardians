@@ -8,7 +8,7 @@ public class LaserBeam : MonoBehaviour
     BoxCollider2D boxCol2d;
     float colSizeX, colSizeY;
 
-    [SerializeField] GameObject player;
+    GameObject player;
 
     [SerializeField] float laserSpeed=15f;
     float a = 1;

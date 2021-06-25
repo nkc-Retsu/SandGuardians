@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c8a0c2f203e614aa63701c890549d0, type: 3}
   m_Name: Enemy_Status_Knight
   m_EditorClassIdentifier: 
-  hp: 50
+  hp: 40
   attackPower: 10
   speed: 0.5
   enemyPoint: 1300

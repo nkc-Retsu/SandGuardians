@@ -5,6 +5,7 @@ using Bridge;
 
 public class LaserHit : MonoBehaviour
 {
+    [SerializeField] private int laserDamage;
     private void OnTriggerEnter2D(Collider2D col)
     {
 

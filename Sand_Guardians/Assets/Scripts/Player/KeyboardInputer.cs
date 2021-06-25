@@ -17,7 +17,7 @@ namespace Player
 
         public bool Attack()
         {
-            return Input.GetKeyDown(KeyCode.X);
+            return Input.GetKey(KeyCode.X);
         }
 
         public float Move()

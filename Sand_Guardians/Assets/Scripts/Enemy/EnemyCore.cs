@@ -16,7 +16,6 @@ namespace Enemy
         private int hp;
 
 
-
         private void Start()
         {
             // ステータスのhpを代入
@@ -43,7 +42,13 @@ namespace Enemy
         /// <param name="damage"></param>
         public void ToEnemyAttack(int damage)
         {
+            // hpをdamage分減少
             this.hp -= damage;
+
+            // 倒したEnemyを++していく 
+            ScoreDirector.enemyBreak++;
+
+            // HPメソッド呼び出し
             HpDirector();
         }
 

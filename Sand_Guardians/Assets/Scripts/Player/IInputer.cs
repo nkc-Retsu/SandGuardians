@@ -10,6 +10,8 @@ namespace Player
 
         bool Attack();
 
-        bool SpecialAttack();
+        bool SpecialAttack_Red();
+
+        bool SpecialAttack_Blue();
     }
 }

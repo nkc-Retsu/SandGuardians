@@ -8,8 +8,8 @@ public class TitlePlayerMove : MonoBehaviour
     float timer = 0;
     float LimitTimer = 5;
     float speed = 3;
-    float highPos = 0;
-    float lowPos = -2;
+    float highPos = -1;
+    float lowPos = -3;
     void Start()
     {
         

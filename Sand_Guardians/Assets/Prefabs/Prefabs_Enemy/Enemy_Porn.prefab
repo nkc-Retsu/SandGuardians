@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 11400000, guid: acb55d82db559a94883a9060a5dbf30c, type: 2}
+  bombObj: {fileID: 1730636727982097547, guid: 133810dbb7c30ef4382c40658aa4c0c4, type: 3}
 --- !u!114 &7786210499798128342
 MonoBehaviour:
   m_ObjectHideFlags: 0

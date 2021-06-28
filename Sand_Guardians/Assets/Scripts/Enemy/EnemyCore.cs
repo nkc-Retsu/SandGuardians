@@ -5,16 +5,31 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class EnemyCore : MonoBehaviour,IP2EAttack
+    public class EnemyCore : MonoBehaviour, IP2EAttack
     {
         // Enemyの基本処理
 
         // ステータス取得用変数
         [SerializeField] private EnemyStatus status;
+        [SerializeField] private GameObject bombObj;
 
         // 代入用hp変数
         private int hp;
 
+        private bool damgeFlg = false;
+        
+        public bool DamageFlg
+        {
+            get
+            {
+                return damgeFlg;
+            }
+            set
+            {
+                damgeFlg = value;
+            }
+        }
+        
 
         private void Start()
         {
@@ -32,6 +47,14 @@ namespace Enemy
             {
                 // スコアにポイントを加算
                 ScoreDirector.scorePoint += status.enemyPoint;
+
+                // 倒したEnemyを++していく 
+                ScoreDirector.enemyBreak++;
+
+                // 爆発オブジェクトを生成
+                Instantiate(bombObj).transform.position = transform.position;
+
+                // 敵を消滅
                 Destroy(gameObject);
             }
         }
@@ -45,14 +68,13 @@ namespace Enemy
             // hpをdamage分減少
             this.hp -= damage;
 
-            // 倒したEnemyを++していく 
-            ScoreDirector.enemyBreak++;
-
             // HPメソッド呼び出し
             HpDirector();
+
+            damgeFlg = true;
         }
 
-        
+
     }
 
 }

@@ -12,6 +12,7 @@ public class GantzCore : MonoBehaviour,IE2GAttack
 
 
     [SerializeField,Tooltip("体力")] private int gantzHp = 100;
+
     // ↑プロパティ
     public int GantzHp
     {
@@ -29,6 +30,7 @@ public class GantzCore : MonoBehaviour,IE2GAttack
 
     // ダメージを受けた時用フラグ
     private bool damageFlg = false;
+
     // ↑プロパティ
     public bool DamageFlg
     {
@@ -50,7 +52,7 @@ public class GantzCore : MonoBehaviour,IE2GAttack
     private void HpDiretor()
     {
         // 体力が0になったらシーン遷移
-        if (gantzHp <= 0) FadeManager.Instance.LoadScene("ScoreScnen",0.5f);
+        if (gantzHp <= 0) FadeManager.Instance.LoadScene("ScoreScene",0.5f);
     }
 
     /// <summary>

@@ -5,8 +5,11 @@ using Bridge;
 
 public class BulletHit : MonoBehaviour
 {
+    [SerializeField] private int damage = 10;
     private void OnTriggerEnter2D(Collider2D col)
     {
+
+        if (col.gameObject.name == "Gantz") return;
 
         IP2EAttack p2EAttack = col.gameObject.GetComponent<IP2EAttack>();
         if (p2EAttack == null)
@@ -15,7 +18,7 @@ public class BulletHit : MonoBehaviour
         }
         else
         {
-            p2EAttack.ToEnemyAttack(10);
+            p2EAttack.ToEnemyAttack(damage);
         }
 
         Destroy(gameObject);

@@ -787,6 +787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisIsHigh: 1
+  bullet: {fileID: 6314470122689363663, guid: 31086b4994121fe46ab7f28f7b7f506b, type: 3}
 --- !u!1 &1871729112
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,6 +884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisIsHigh: 0
+  bullet: {fileID: 7454072962994978744, guid: 8cbc00342489aea4e88dc3daad7f217b, type: 3}
 --- !u!1 &1930488043
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,9 +17,9 @@ namespace Enemy
         /// </summary>
         enum SpawnScore
         {
-            spawnLancerScore = 5000,
-            spawnKnightScore = 10000,
-            spawnBossScore   = 20000,
+            spawnLancerScore = 500,
+            spawnKnightScore = 1000,
+            spawnBossScore   = 2000,
         }
 
 

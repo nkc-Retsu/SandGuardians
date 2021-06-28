@@ -19,7 +19,5 @@ public class LaserHit : MonoBehaviour
             p2EAttack.ToEnemyAttack(10);
         }
 
-        Destroy(gameObject);
-
     }
 }

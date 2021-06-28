@@ -4,6 +4,6 @@ namespace Bridge
     {
         // PlayerがEnemyを攻撃するインターフェース
 
-        void ToEnemyAttack(int damage);
+        void ToEnemyAttack(int damage ,ref bool isDead);
     }
 }

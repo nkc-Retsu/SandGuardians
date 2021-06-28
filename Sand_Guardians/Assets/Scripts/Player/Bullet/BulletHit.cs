@@ -6,6 +6,9 @@ using Bridge;
 public class BulletHit : MonoBehaviour
 {
     [SerializeField] private int damage = 10;
+
+    private bool isDefeat = false;
+
     private void OnTriggerEnter2D(Collider2D col)
     {
 
@@ -18,7 +21,10 @@ public class BulletHit : MonoBehaviour
         }
         else
         {
-            p2EAttack.ToEnemyAttack(damage);
+            p2EAttack.ToEnemyAttack(damage,ref isDefeat);
+            Debug.Log(isDefeat);
+
+            isDefeat = false;
         }
 
         Destroy(gameObject);

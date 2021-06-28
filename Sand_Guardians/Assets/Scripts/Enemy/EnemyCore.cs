@@ -13,12 +13,22 @@ namespace Enemy
         [SerializeField] private EnemyStatus status;
         [SerializeField] private GameObject bombObj;
 
-        // クラス変数
-        
-
-
         // 代入用hp変数
         private int hp;
+
+        private bool damgeFlg = false;
+        
+        public bool DamageFlg
+        {
+            get
+            {
+                return damgeFlg;
+            }
+            set
+            {
+                damgeFlg = value;
+            }
+        }
         
 
         private void Start()
@@ -60,6 +70,8 @@ namespace Enemy
 
             // HPメソッド呼び出し
             HpDirector();
+
+            damgeFlg = true;
         }
 
 

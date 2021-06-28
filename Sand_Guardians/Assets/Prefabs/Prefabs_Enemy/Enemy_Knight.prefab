@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6735750078556478712}
   - component: {fileID: 729947826480526935}
   - component: {fileID: 711611446489212794}
+  - component: {fileID: 2055279100097895693}
   m_Layer: 0
   m_Name: Enemy_Knight
   m_TagString: Untagged
@@ -50,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 11400000, guid: 8f041dc6c4c46e34084e4b99ef2a023e, type: 2}
+  bomb: {fileID: 1730636727982097547, guid: 133810dbb7c30ef4382c40658aa4c0c4, type: 3}
 --- !u!114 &6735750078556478715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,3 +267,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2055279100097895693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735750078556478719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a081ef5d5cf664c807bc0caf916417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

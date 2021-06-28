@@ -19,8 +19,6 @@ public class GantzDamage : MonoBehaviour
     // 色変数
     private Color clearColor = new Color(1f, 0f, 0f, 1f);
 
-    private Vector3 firstPos;
-    private float time;
 
     void Start()
     {
@@ -28,8 +26,6 @@ public class GantzDamage : MonoBehaviour
         image = GetComponent<Image>();
         core = gantz.GetComponent<GantzCore>();
         sr = gantz.GetComponent<SpriteRenderer>();
-
-        firstPos = transform.position;
     }
 
     void Update()
@@ -78,25 +74,4 @@ public class GantzDamage : MonoBehaviour
         sr.color = new Color(1, 1, 1, 1);
     }
 
-
-    private void ShakePos()
-    {
-        // ランダム変数
-        float randamPos_X;
-        float randamPos_Y;
-
-        // 位置をランダム
-        randamPos_X = Random.Range(-3f, 3f);
-        randamPos_Y = Random.Range(-3f, 3f);
-
-        // 位置を変更
-        transform.position = new Vector3(randamPos_X, randamPos_Y, 0);
-
-        // 位置を戻す
-        transform.position = firstPos;
-
-        // 位置を戻す
-        transform.position = firstPos;
-
-    }
 }

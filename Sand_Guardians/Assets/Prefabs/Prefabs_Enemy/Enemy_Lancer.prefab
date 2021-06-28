@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 705625167814077500}
   - component: {fileID: 1447604906627428496}
   - component: {fileID: -4990925592369073984}
+  - component: {fileID: -9203629127171899369}
   m_Layer: 0
   m_Name: Enemy_Lancer
   m_TagString: Untagged
@@ -64,6 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 11400000, guid: 6f1f7de31b7070341bac61257356a939, type: 2}
+  bomb: {fileID: 1730636727982097547, guid: 133810dbb7c30ef4382c40658aa4c0c4, type: 3}
 --- !u!114 &5923927297400940145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,7 +81,7 @@ MonoBehaviour:
   status: {fileID: 11400000, guid: 6f1f7de31b7070341bac61257356a939, type: 2}
   gantz: {fileID: 8571648612604510812, guid: 99c2b393f3a3fd44b8aa449eca0018c5, type: 3}
   timeUp: 2
-  movePos: 3
+  movePos: 1
 --- !u!212 &9036642124946020028
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -264,3 +266,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-9203629127171899369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2377385658679274002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a081ef5d5cf664c807bc0caf916417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

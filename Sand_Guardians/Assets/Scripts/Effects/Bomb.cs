@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
+    private void Update()
+    {
+        DestroyBomb();
+    }
+
     public void DestroyBomb()
     {
-        Destroy(gameObject);
+        Destroy(gameObject,0.5f);
     }
 }

@@ -13,6 +13,7 @@ namespace Enemy
 
         // ステータス取得用変数
         [SerializeField] private EnemyStatus status;
+        [SerializeField] private GameObject bomb;
 
 
         /// <summary>
@@ -31,6 +32,9 @@ namespace Enemy
          
                 // Objectを消滅
                 Destroy(gameObject);
+
+                // Effectを生成
+                Instantiate(bomb).transform.position = transform.position;
             }
         }
     }

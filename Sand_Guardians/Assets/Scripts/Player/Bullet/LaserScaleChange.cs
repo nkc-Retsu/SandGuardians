@@ -6,9 +6,9 @@ public class LaserScaleChange : MonoBehaviour
 {
     private bool isAppearing;
     private bool isExpanding = false;
-    [SerializeField] private float scaleChangeRate = 3f;
+    //[SerializeField] private float scaleChangeRate = 3f;
     float timeSecondCounter = 0;
-    [SerializeField] private float scaleRate = 3f;
+    //[SerializeField] private float scaleRate = 3f;
 
     [SerializeField] private float scaleChangeTime = 0.5f;
     private float timeCounter2 = 0;

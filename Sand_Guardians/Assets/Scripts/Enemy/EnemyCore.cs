@@ -13,9 +13,13 @@ namespace Enemy
         [SerializeField] private EnemyStatus status;
         [SerializeField] private GameObject bombObj;
 
+        // ƒNƒ‰ƒX•Ï”
+        
+
+
         // ‘ã“ü—php•Ï”
         private int hp;
-
+        
 
         private void Start()
         {

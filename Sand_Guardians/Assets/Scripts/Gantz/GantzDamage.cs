@@ -17,7 +17,7 @@ public class GantzDamage : MonoBehaviour
 
 
     // 色変数
-    private Color clearColor = new Color(1f, 1f, 1f, 0f);
+    private Color clearColor = new Color(1f, 0f, 0f, 1f);
 
     private Vector3 firstPos;
     private float time;
@@ -72,24 +72,10 @@ public class GantzDamage : MonoBehaviour
     /// 透明度を変更する処理(コルーチン)
     /// </summary>k
     IEnumerator Damage_ColorChange()
-    {
-        // ループ用変数
-        int count = 10;
-
-        // ループ
-        while (count > 0)
-        {
-            // 透明状態
-            sr.color = clearColor;
-            yield return new WaitForSeconds(0.05f);
-
-            // 普通の状態
-            sr.color = new Color(1, 1, 1, 1);
-            yield return new WaitForSeconds(0.05f);
-
-            // 変数を減らす
-            count--;
-        }
+    { 
+        sr.color = clearColor;
+        yield return new WaitForSeconds(0.1f);
+        sr.color = new Color(1, 1, 1, 1);
     }
 
 

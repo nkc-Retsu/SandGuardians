@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status: {fileID: 11400000, guid: acb55d82db559a94883a9060a5dbf30c, type: 2}
   bombObj: {fileID: 1730636727982097547, guid: 133810dbb7c30ef4382c40658aa4c0c4, type: 3}
+  seObj: {fileID: 4085782892103320943, guid: 1a93a99b2a25e614e9a2ee283436f1df, type: 3}
 --- !u!114 &7786210499798128342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status: {fileID: 11400000, guid: acb55d82db559a94883a9060a5dbf30c, type: 2}
   bomb: {fileID: 1730636727982097547, guid: 133810dbb7c30ef4382c40658aa4c0c4, type: 3}
-  bombSE: {fileID: 8300000, guid: 0b0eae51481a4fd41be13252a1fdb0fe, type: 3}
+  seObj: {fileID: 4085782892103320943, guid: 1a93a99b2a25e614e9a2ee283436f1df, type: 3}
 --- !u!114 &172414870290867296
 MonoBehaviour:
   m_ObjectHideFlags: 0

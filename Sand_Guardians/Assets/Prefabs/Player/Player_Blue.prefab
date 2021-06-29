@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 7575141074702895236, guid: 70f4bc26d3b8b0946b4a49f63deb91db, type: 3}
+  attackSpan: 0.2
 --- !u!114 &1091335422410403635
 MonoBehaviour:
   m_ObjectHideFlags: 0

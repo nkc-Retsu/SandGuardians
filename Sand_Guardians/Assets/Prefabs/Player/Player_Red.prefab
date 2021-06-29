@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 7575141074702895236, guid: 97a035c21af69114bb07ca56b2a01e30, type: 3}
+  attackSpan: 0.2
 --- !u!114 &3240215467838619089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +144,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserBeam: {fileID: 1654135108966143598, guid: 7d7b437bcdaa8e24eb2f9ab1ab23bcf1, type: 3}
+  useSP: 5

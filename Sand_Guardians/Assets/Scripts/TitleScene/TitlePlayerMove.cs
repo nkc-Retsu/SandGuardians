@@ -10,6 +10,8 @@ public class TitlePlayerMove : MonoBehaviour
     float speed = 5;
     float highPos = -1;
     float lowPos = -3;
+    float shotSpan = 0.05f;
+    float renshaTimer = 0;
     SpriteRenderer spRe;
     [SerializeField] GameObject bullet;
     void Start()
@@ -54,9 +56,14 @@ public class TitlePlayerMove : MonoBehaviour
 
     private void Shot()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        renshaTimer -= Time.deltaTime;
+        if (Input.GetKey(KeyCode.X))
         {
-            Instantiate(bullet, this.transform.position, Quaternion.Euler(transform.localEulerAngles));
+            if(renshaTimer <= 0)
+            {
+                Instantiate(bullet, this.transform.position, Quaternion.Euler(transform.localEulerAngles));
+                renshaTimer = shotSpan;
+            }
         }
     }
 }

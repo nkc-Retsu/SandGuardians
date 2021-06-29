@@ -22,12 +22,15 @@ namespace Player
 
         void Update()
         {
-            timeSecondCounter += Time.deltaTime;
+            timeSecondCounter -= Time.deltaTime;
 
-            if (timeSecondCounter > attackSpan)
+            if (inputer.Attack())
             {
-                if (inputer.Attack()) Attack();
-                timeSecondCounter = 0;
+                if(timeSecondCounter<=0)
+                {
+                    Attack();
+                    timeSecondCounter = attackSpan;
+                }
             }
 
         }

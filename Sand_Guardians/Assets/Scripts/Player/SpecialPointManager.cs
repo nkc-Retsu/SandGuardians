@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class SpecialPointManager : MonoBehaviour
 {
-    [SerializeField] int specialPoint = 10;
+    [SerializeField] int specialPoint = 0;
+    private const int SPECIAL_POINT_MAX = 10;
 
     [SerializeField] private GameObject[] powerGaugeCell = new GameObject[10];
 
@@ -13,13 +14,23 @@ public class SpecialPointManager : MonoBehaviour
     {
         for(int i=0;i<powerGaugeCell.Length;++i)
         {
-            powerGaugeCell[i].SetActive(true);
+            powerGaugeCell[i].SetActive(false);
         }
     }
 
     void Update()
     {
 
+    }
+
+    public void AddPoint()
+    {
+        if(specialPoint<SPECIAL_POINT_MAX)
+        {
+            specialPoint++;
+        }
+
+        powerGaugeCell[specialPoint-1].SetActive(true);
     }
 
     public bool UsePoint(int point)
@@ -34,8 +45,6 @@ public class SpecialPointManager : MonoBehaviour
         {
             powerGaugeCell[i-1].SetActive(false);
         }
-
-        
 
         return true;
         

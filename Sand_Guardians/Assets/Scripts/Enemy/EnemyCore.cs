@@ -12,6 +12,7 @@ namespace Enemy
         // ステータス取得用変数
         [SerializeField] private EnemyStatus status;
         [SerializeField] private GameObject bombObj;
+        [SerializeField] private GameObject seObj;
 
         // 代入用hp変数
         private int hp;
@@ -54,8 +55,10 @@ namespace Enemy
                 // 爆発オブジェクトを生成
                 Instantiate(bombObj).transform.position = transform.position;
 
+                Instantiate(seObj);
+
                 // 敵を消滅
-                Destroy(gameObject,0.2f);
+                Destroy(gameObject);
             }
         }
 
@@ -68,8 +71,14 @@ namespace Enemy
             // hpをdamage分減少
             this.hp -= damage;
 
-            if (hp <= 0) isDead = true;
-            else isDead = false;
+            if (hp <= 0)
+            {
+                isDead = true;
+            }
+            else
+            {
+                isDead = false;
+            } 
 
             // HPメソッド呼び出し
             HpDirector();

@@ -15,14 +15,11 @@ namespace Enemy
         [SerializeField] private EnemyStatus status;
         [SerializeField] private GameObject bomb;
 
-        [SerializeField] private AudioClip bombSE;
-
-        private AudioSource audioSource;
+        [SerializeField] private GameObject seObj; 
 
 
         private void Start()
         {
-            audioSource = GetComponent<AudioSource>();
         }
 
 
@@ -41,10 +38,10 @@ namespace Enemy
                 e2GAttack.ToGantzAttack(status.attackPower);
 
                 // îöîjSE
-                audioSource.PlayOneShot(bombSE);
+                Instantiate(seObj);
 
                 // ObjectÇè¡ñ≈
-                Destroy(gameObject,0.2f);
+                Destroy(gameObject);
 
                 // EffectÇê∂ê¨
                 Instantiate(bomb).transform.position = transform.position;

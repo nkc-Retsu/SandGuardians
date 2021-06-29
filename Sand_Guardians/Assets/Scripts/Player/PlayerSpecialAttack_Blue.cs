@@ -21,6 +21,8 @@ namespace Player
 
         [SerializeField] private int useSP = 2;
 
+        private AudioSource audioSource;
+        [SerializeField] AudioClip spreadShotSound;
 
         void Start()
         {
@@ -30,6 +32,7 @@ namespace Player
             sPManager = GameObject.Find("SPManager");
             sPManager_cs = sPManager.GetComponent<SpecialPointManager>();
 
+            audioSource = GetComponent<AudioSource>();
 
             angle /= shotCount;
         }
@@ -52,6 +55,8 @@ namespace Player
                     Instantiate(spreadBullet, this.transform.position + offsetPos, Quaternion.Euler(rotate));
                     rotate += new Vector3(0, 0, angle);
                 }
+
+                audioSource.PlayOneShot(spreadShotSound);
             }
         }
     }

@@ -55,7 +55,7 @@ namespace Enemy
                 Instantiate(bombObj).transform.position = transform.position;
 
                 // 敵を消滅
-                Destroy(gameObject,0.2f);
+                Destroy(gameObject);
             }
         }
 
@@ -68,8 +68,14 @@ namespace Enemy
             // hpをdamage分減少
             this.hp -= damage;
 
-            if (hp <= 0) isDead = true;
-            else isDead = false;
+            if (hp <= 0)
+            {
+                isDead = true;
+            }
+            else
+            {
+                isDead = false;
+            } 
 
             // HPメソッド呼び出し
             HpDirector();

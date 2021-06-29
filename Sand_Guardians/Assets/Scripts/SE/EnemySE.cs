@@ -1,29 +1,23 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : MonoBehaviour
+public class EnemySE : MonoBehaviour
 {
-    // 音用変数
     [SerializeField] private AudioClip bombSE;
 
     private AudioSource audioSource;
 
-
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         audioSource = GetComponent<AudioSource>();
 
-        DestroyBomb();
+        SEShot();
     }
 
-    /// <summary>
-    /// 爆発する処理
-    /// </summary>
-    public void DestroyBomb()
+    private void SEShot()
     {
         audioSource.PlayOneShot(bombSE);
-
-        Destroy(gameObject,0.5f);
     }
 }

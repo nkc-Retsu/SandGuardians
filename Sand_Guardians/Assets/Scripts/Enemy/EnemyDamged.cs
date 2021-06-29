@@ -35,7 +35,6 @@ namespace Enemy
 
         private IEnumerator ColorChange()
         {
-            Debug.Log("‚¨‚¨‚¨‚¨");
             sr.color = new Color(1, 1, 1, 0); ;
             yield return new WaitForSeconds(0.1f);
             sr.color = new Color(1, 1, 1, 1);

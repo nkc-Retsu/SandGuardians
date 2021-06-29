@@ -12,7 +12,6 @@ namespace Enemy
         // ステータス取得用変数
         [SerializeField] private EnemyStatus status;
         [SerializeField] private GameObject bombObj;
-        [SerializeField] private GameObject seObj;
 
         // 代入用hp変数
         private int hp;
@@ -54,8 +53,6 @@ namespace Enemy
 
                 // 爆発オブジェクトを生成
                 Instantiate(bombObj).transform.position = transform.position;
-
-                Instantiate(seObj);
 
                 // 敵を消滅
                 Destroy(gameObject);

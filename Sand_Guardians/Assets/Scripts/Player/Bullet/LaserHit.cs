@@ -6,6 +6,7 @@ using Bridge;
 public class LaserHit : MonoBehaviour
 {
     [SerializeField] private int laserDamage;
+    private bool isDefeat;
     private void OnTriggerEnter2D(Collider2D col)
     {
 
@@ -16,7 +17,7 @@ public class LaserHit : MonoBehaviour
         }
         else
         {
-            p2EAttack.ToEnemyAttack(10);
+            p2EAttack.ToEnemyAttack(10,ref isDefeat);
         }
 
     }

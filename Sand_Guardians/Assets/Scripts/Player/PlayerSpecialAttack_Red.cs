@@ -13,21 +13,31 @@ namespace Player
         private Vector3 offsetPos; // î≠éÀà íu
         private float offsetRate = 0.2f; // î≠éÀà íuí≤êÆóp
 
+        GameObject sPManager;
+        SpecialPointManager sPManager_cs;
+
+        [SerializeField] private int useSP = 5;
+
         void Start()
         {
             inputer = GetComponent<IInputer>();
+            sPManager = GameObject.Find("SPManager");
+            sPManager_cs = sPManager.GetComponent<SpecialPointManager>();
         }
 
         void Update()
         {
             if(inputer.SpecialAttack_Red()) LaserBeam();
         }
-        
 
         private void LaserBeam()
         {
-            offsetPos = transform.up * offsetRate;
-            Instantiate(laserBeam, this.transform.position + offsetPos, Quaternion.Euler(transform.localEulerAngles));
+            if (sPManager_cs.UsePoint(useSP))
+            {
+                offsetPos = transform.up * offsetRate;
+                Instantiate(laserBeam, this.transform.position + offsetPos, Quaternion.Euler(transform.localEulerAngles));
+            }
+            else return;
         }
     }
 }

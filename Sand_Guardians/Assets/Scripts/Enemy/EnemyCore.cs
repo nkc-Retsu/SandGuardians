@@ -55,7 +55,7 @@ namespace Enemy
                 Instantiate(bombObj).transform.position = transform.position;
 
                 // 敵を消滅
-                Destroy(gameObject);
+                Destroy(gameObject,0.2f);
             }
         }
 
@@ -63,10 +63,13 @@ namespace Enemy
         /// ダメージを受けた時のインターフェース処理
         /// </summary>
         /// <param name="damage"></param>
-        public void ToEnemyAttack(int damage)
+        public void ToEnemyAttack(int damage, ref bool isDead)
         {
             // hpをdamage分減少
             this.hp -= damage;
+
+            if (hp <= 0) isDead = true;
+            else isDead = false;
 
             // HPメソッド呼び出し
             HpDirector();

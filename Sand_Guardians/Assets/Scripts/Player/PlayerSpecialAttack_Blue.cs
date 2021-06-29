@@ -16,9 +16,21 @@ namespace Player
         [SerializeField] private float angle = 0; // î≠éÀäpìx
         [SerializeField] private int shotCount = 11; // íeêî
 
+        GameObject sPManager;
+        SpecialPointManager sPManager_cs;
+
+        [SerializeField] private int useSP = 2;
+
+
         void Start()
         {
             inputer = GetComponent<IInputer>();
+
+            inputer = GetComponent<IInputer>();
+            sPManager = GameObject.Find("SPManager");
+            sPManager_cs = sPManager.GetComponent<SpecialPointManager>();
+
+
             angle /= shotCount;
         }
 
@@ -29,13 +41,17 @@ namespace Player
 
         private void SpreadBullet()
         {
-            offsetPos = transform.up * offsetRate;
-            Vector3 rotate = transform.localEulerAngles - new Vector3(0, 0, angle * (shotCount / 2));
-
-            for (int i = 0; i < shotCount; ++i)
+            if (sPManager_cs.UsePoint(useSP))
             {
-                Instantiate(spreadBullet, this.transform.position + offsetPos, Quaternion.Euler(rotate));
-                rotate += new Vector3(0, 0, angle);
+
+                offsetPos = transform.up * offsetRate;
+                Vector3 rotate = transform.localEulerAngles - new Vector3(0, 0, angle * (shotCount / 2));
+
+                for (int i = 0; i < shotCount; ++i)
+                {
+                    Instantiate(spreadBullet, this.transform.position + offsetPos, Quaternion.Euler(rotate));
+                    rotate += new Vector3(0, 0, angle);
+                }
             }
         }
     }

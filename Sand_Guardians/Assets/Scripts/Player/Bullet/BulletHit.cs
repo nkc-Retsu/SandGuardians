@@ -9,6 +9,18 @@ public class BulletHit : MonoBehaviour
 
     private bool isDefeat = false;
 
+    [SerializeField] private bool canGetPoint = false;
+
+    private GameObject spManager;
+    private SpecialPointManager spManager_cs;
+
+    private void Start()
+    {
+        spManager = GameObject.Find("SPManager");
+        spManager_cs = spManager.GetComponent<SpecialPointManager>();
+    }
+
+
     private void OnTriggerEnter2D(Collider2D col)
     {
 
@@ -23,7 +35,10 @@ public class BulletHit : MonoBehaviour
         {
             p2EAttack.ToEnemyAttack(damage,ref isDefeat);
             Debug.Log(isDefeat);
-
+            if(isDefeat)
+            {
+                spManager_cs.AddPoint();
+            }
             isDefeat = false;
         }
 

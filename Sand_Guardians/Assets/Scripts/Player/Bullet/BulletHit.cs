@@ -35,10 +35,11 @@ public class BulletHit : MonoBehaviour
         {
             p2EAttack.ToEnemyAttack(damage,ref isDefeat);
             Debug.Log(isDefeat);
-            if(isDefeat)
+            if (isDefeat && canGetPoint)
             {
                 spManager_cs.AddPoint();
             }
+
             isDefeat = false;
         }
 

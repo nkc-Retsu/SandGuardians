@@ -15,9 +15,13 @@ namespace Player
         private float timeSecondCounter = 0;
         [SerializeField] private float attackSpan = 0.2f;
 
+        private AudioSource audioSource;
+        [SerializeField] AudioClip shotSound;
+
         void Start()
         {
             inputer = GetComponent<IInputer>();
+            audioSource = GetComponent<AudioSource>();
         }
 
         void Update()
@@ -39,6 +43,7 @@ namespace Player
         {
             offsetPos = transform.up * offsetRate;
             Instantiate(bullet, this.transform.position+offsetPos, Quaternion.Euler(transform.localEulerAngles));
+            audioSource.PlayOneShot(shotSound);
         }
     }
 }

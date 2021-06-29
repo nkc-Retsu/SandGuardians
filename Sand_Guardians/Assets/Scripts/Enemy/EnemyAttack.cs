@@ -15,9 +15,6 @@ namespace Enemy
         [SerializeField] private EnemyStatus status;
         [SerializeField] private GameObject bomb;
 
-        [SerializeField] private GameObject seObj; 
-
-
         private void Start()
         {
         }
@@ -36,10 +33,7 @@ namespace Enemy
             {
                 // インターフェース呼び出し
                 e2GAttack.ToGantzAttack(status.attackPower);
-
-                // 爆破SE
-                Instantiate(seObj);
-
+                
                 // Objectを消滅
                 Destroy(gameObject);
 

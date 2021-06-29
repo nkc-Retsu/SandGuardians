@@ -18,11 +18,16 @@ namespace Player
 
         [SerializeField] private int useSP = 5;
 
+        private AudioSource audioSource;
+        [SerializeField] private AudioClip laserSound;
+
         void Start()
         {
             inputer = GetComponent<IInputer>();
             sPManager = GameObject.Find("SPManager");
             sPManager_cs = sPManager.GetComponent<SpecialPointManager>();
+
+            audioSource = GetComponent<AudioSource>();
         }
 
         void Update()
@@ -36,6 +41,8 @@ namespace Player
             {
                 offsetPos = transform.up * offsetRate;
                 Instantiate(laserBeam, this.transform.position + offsetPos, Quaternion.Euler(transform.localEulerAngles));
+
+                audioSource.PlayOneShot(laserSound);
             }
             else return;
         }

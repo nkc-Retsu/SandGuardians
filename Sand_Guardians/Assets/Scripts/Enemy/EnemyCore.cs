@@ -55,7 +55,7 @@ namespace Enemy
                 Instantiate(bombObj).transform.position = transform.position;
 
                 // ìGÇè¡ñ≈
-                Destroy(gameObject);
+                Destroy(gameObject,0.2f);
             }
         }
 

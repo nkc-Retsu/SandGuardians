@@ -20,6 +20,7 @@ namespace Enemy
             spawnLancerScore = 500,
             spawnKnightScore = 1000,
             spawnBossScore   = 2000,
+            HardScore        = 5000,
         }
 
 
@@ -79,11 +80,16 @@ namespace Enemy
 
             }
             // EnemyBossを出現可能にする
-            else if (ScoreDirector.scorePoint >= (int)SpawnScore.spawnBossScore)
+            else if (ScoreDirector.scorePoint >= (int)SpawnScore.spawnBossScore && ScoreDirector.scorePoint >= (int)SpawnScore.spawnBossScore)
             {
                 spawnLevel = 4;
                 timeCount = 1f;
 
+            }
+            // Hardモード
+            else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore)
+            {
+                timeCount = 0.5f;
             }
         }
 
@@ -127,18 +133,18 @@ namespace Enemy
                 // 出現させる処理
                 switch (Random.Range(0, spawnLevel))
                 {
+                    // Porn出現
                     case 0:
-                        Debug.Log("Porn出現");
                         Instantiate(enemyPorn).transform.position = spawnPos;
                         break;
 
+                    // Lancer出現
                     case 1:
-                        Debug.Log("Lancer出現");
                         Instantiate(enemyLancer).transform.position = spawnPos;
                         break;
 
+                    // Knight出現
                     case 2:
-                        Debug.Log("Knight出現");
                         Instantiate(enemyKnight).transform.position = spawnPos;
                         break;
 

@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScoreScene.unity
     guid: 2541c834dd778554aaa3c2b9cd066672
+  - enabled: 1
+    path: Assets/Scenes/EnemyTestScene.unity
+    guid: e3f2a9ac54ef73c45aecefbc10bab366
   m_configObjects: {}

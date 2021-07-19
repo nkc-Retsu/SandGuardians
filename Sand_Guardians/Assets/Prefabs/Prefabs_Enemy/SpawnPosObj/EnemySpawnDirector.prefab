@@ -46,9 +46,9 @@ MonoBehaviour:
   enemyPorn: {fileID: 2662878372868320741, guid: 518015968b804474b94557d25a13fb92, type: 3}
   enemyLancer: {fileID: 2377385658679274002, guid: cd723c136f55bbc4faaef0320bf8dcc8, type: 3}
   enemyKnight: {fileID: 6735750078556478719, guid: 6f91dbcd0c97df342b5ca5fc703b4069, type: 3}
-  enemyStatus_Porn: {fileID: 0}
-  enemyStatus_Lnacer: {fileID: 0}
-  enemyStatus_Knight: {fileID: 0}
+  enemyStatus_Porn: {fileID: 11400000, guid: acb55d82db559a94883a9060a5dbf30c, type: 2}
+  enemyStatus_Lanacer: {fileID: 11400000, guid: 6f1f7de31b7070341bac61257356a939, type: 2}
+  enemyStatus_Knight: {fileID: 11400000, guid: 8f041dc6c4c46e34084e4b99ef2a023e, type: 2}
   lerpObj:
   - {fileID: 5853643504263728836, guid: 6f74ae876496d1b4d8ca9ab2ff2c1dca, type: 3}
   - {fileID: 8559861468622311193, guid: c54a4652c052e714eb3e248e6d67446d, type: 3}

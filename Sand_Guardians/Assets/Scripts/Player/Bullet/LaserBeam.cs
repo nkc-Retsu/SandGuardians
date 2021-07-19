@@ -10,14 +10,17 @@ public class LaserBeam : MonoBehaviour
 
     GameObject player;
 
+    public void SetPlayer(GameObject playerObj)
+    {
+        player = playerObj;
+    }
+
     [SerializeField] float laserSpeed=15f;
     float a = 1;
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         boxCol2d = GetComponent<BoxCollider2D>();
-
-        player = GameObject.Find("Player_Red");
 
         colSizeX = 1;
         colSizeY = 1;

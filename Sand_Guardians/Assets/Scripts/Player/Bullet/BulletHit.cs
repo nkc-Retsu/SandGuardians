@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Bridge;
 
-public class BulletHit : MonoBehaviour
+public class BulletHit : MonoBehaviour, IDamageSettable
 {
     [SerializeField] private int damage = 10;
 
@@ -13,6 +13,11 @@ public class BulletHit : MonoBehaviour
 
     private GameObject spManager;
     private SpecialPointManager spManager_cs;
+
+    public void SetDamage(int damage)
+    {
+        this.damage = damage;
+    }
 
     private void Start()
     {
@@ -24,7 +29,7 @@ public class BulletHit : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
 
-        if (col.gameObject.name == "Gantz") return;
+        if (col.gameObject.name == "Gantz" || col.gameObject.tag=="Bullet") return;
 
         IP2EAttack p2EAttack = col.gameObject.GetComponent<IP2EAttack>();
         if (p2EAttack == null)
@@ -34,7 +39,6 @@ public class BulletHit : MonoBehaviour
         else
         {
             p2EAttack.ToEnemyAttack(damage,ref isDefeat);
-            Debug.Log(isDefeat);
             if (isDefeat && canGetPoint)
             {
                 spManager_cs.AddPoint();
@@ -43,7 +47,6 @@ public class BulletHit : MonoBehaviour
             isDefeat = false;
         }
 
-        Destroy(gameObject);
-
+        gameObject.SetActive(false);
     }
 }

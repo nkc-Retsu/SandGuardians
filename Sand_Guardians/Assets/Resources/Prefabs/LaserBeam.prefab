@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1654135108966143587}
   - component: {fileID: -1778751841714204600}
   m_Layer: 0
-  m_Name: Laser_0
+  m_Name: LaserBeam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,9 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32dfdd648a7635b40b42a3dc3a2797a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleChangeRate: 2
-  scaleRate: 1
   scaleChangeTime: 0.1
+  laserLifetime: 0.5
 --- !u!114 &1654135108966143586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,3 +151,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92057bd83e92b0f499d9d77e31e4aecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laserDamage: 100

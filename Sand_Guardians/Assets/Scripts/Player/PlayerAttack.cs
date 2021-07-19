@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Bridge;
 
 namespace Player
 {
@@ -8,12 +9,17 @@ namespace Player
     {
         private IInputer inputer; // インプッター
 
-        [SerializeField] private GameObject bullet;
+        [SerializeField] private bool redFlg;
+        private BulletPool bulletPool;
+        [SerializeField] private GameObject poolObj;
+        
         private Vector3 offsetPos; // 発射位置調整
         private float offsetRate = 0.2f; // 発射位置調整用
 
         private float timeSecondCounter = 0; // タイマー
         [SerializeField] private float attackSpan = 0.2f;　// 発射間隔
+
+        [SerializeField] private int damage = 3;
 
         private AudioSource audioSource;
         [SerializeField] AudioClip shotSound;
@@ -22,6 +28,7 @@ namespace Player
         {
             // コンポーネント取得
             inputer = GetComponent<IInputer>();
+            bulletPool = poolObj.GetComponent<BulletPool>();
             audioSource = GetComponent<AudioSource>();
         }
 
@@ -43,7 +50,13 @@ namespace Player
         void Attack()
         {
             offsetPos = transform.up * offsetRate; // 発射位置調整
-            Instantiate(bullet, this.transform.position+offsetPos, Quaternion.Euler(transform.localEulerAngles)); // 弾生成
+            GameObject bullet;
+            bullet = (redFlg) ? bulletPool.GetRedBullet() : bulletPool.GetBlueBullet();
+            
+            bullet.SetActive(true);
+            bullet.GetComponent<IDamageSettable>().SetDamage(damage);
+            bullet.transform.position = transform.position + offsetPos;
+            bullet.transform.localEulerAngles = transform.localEulerAngles;
             audioSource.PlayOneShot(shotSound); // 音
         }
     }

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1091335422410403639}
   - component: {fileID: 1091335422410403638}
   - component: {fileID: 1091335422410403634}
-  - component: {fileID: 1091335422410403635}
   - component: {fileID: 1288671105037778969}
+  - component: {fileID: 6306059353155975355}
   m_Layer: 0
   m_Name: Player_Blue
   m_TagString: Untagged
@@ -130,26 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d85ca9fbcae894596eaf9d04c19b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 7575141074702895236, guid: 70f4bc26d3b8b0946b4a49f63deb91db, type: 3}
+  redFlg: 0
+  poolObj: {fileID: 0}
   attackSpan: 0.05
+  damage: 3
   shotSound: {fileID: 0}
---- !u!114 &1091335422410403635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1091335422410403637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27d76da0230d1974da8fc01d3da41c23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spreadBullet: {fileID: 7575141074702895236, guid: 2842e271036865c4087988b5ca187eae, type: 3}
-  angle: 80
-  shotCount: 11
-  useSP: 2
-  spreadShotSound: {fileID: 8300000, guid: 46bfa2635b0f2cd44882876b79601305, type: 3}
 --- !u!82 &1288671105037778969
 AudioSource:
   m_ObjectHideFlags: 0
@@ -246,3 +231,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6306059353155975355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091335422410403637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a6abd01ddbef2478b78b1e3dd6031d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

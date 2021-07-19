@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3240215467838619090}
   - component: {fileID: 3240215467838619091}
   - component: {fileID: 3240215467838619088}
-  - component: {fileID: 3240215467838619089}
   - component: {fileID: 2723204396642196260}
+  - component: {fileID: 3332629773426227546}
   m_Layer: 0
   m_Name: Player_Red
   m_TagString: Untagged
@@ -130,24 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d85ca9fbcae894596eaf9d04c19b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 7575141074702895236, guid: 97a035c21af69114bb07ca56b2a01e30, type: 3}
+  redFlg: 1
+  poolObj: {fileID: 0}
   attackSpan: 0.05
+  damage: 3
   shotSound: {fileID: 8300000, guid: 07d7c9efbac492b4996a04ab52a3082f, type: 3}
---- !u!114 &3240215467838619089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3240215467838619095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b13259d0718514d43873cf05607dfb1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laserBeam: {fileID: 1654135108966143598, guid: 7d7b437bcdaa8e24eb2f9ab1ab23bcf1, type: 3}
-  useSP: 5
-  laserSound: {fileID: 8300000, guid: f9fa16a8b4917dc40a1a4790d7b47e3e, type: 3}
 --- !u!82 &2723204396642196260
 AudioSource:
   m_ObjectHideFlags: 0
@@ -244,3 +231,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3332629773426227546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3240215467838619095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a6abd01ddbef2478b78b1e3dd6031d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -52,7 +52,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status: {fileID: 11400000, guid: 6f1f7de31b7070341bac61257356a939, type: 2}
   bombObj: {fileID: 1730636727982097547, guid: 133810dbb7c30ef4382c40658aa4c0c4, type: 3}
-  seObj: {fileID: 4085782892103320943, guid: 1a93a99b2a25e614e9a2ee283436f1df, type: 3}
 --- !u!114 &1566862056202754163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +66,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status: {fileID: 11400000, guid: 6f1f7de31b7070341bac61257356a939, type: 2}
   bomb: {fileID: 1730636727982097547, guid: 133810dbb7c30ef4382c40658aa4c0c4, type: 3}
-  seObj: {fileID: 4085782892103320943, guid: 1a93a99b2a25e614e9a2ee283436f1df, type: 3}
 --- !u!114 &5923927297400940145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +121,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 4040125265641086156, guid: 01a29296859721b4b80def24918673fd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

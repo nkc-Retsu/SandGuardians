@@ -48,9 +48,6 @@ public class ScoreSceneChangeDirectr : MonoBehaviour
             // ボタンのSE
             audioSource.PlayOneShot(buttonSE);
 
-            // スコアを初期化
-            ScoreDirector.enemyBreak = 0;
-            ScoreDirector.scorePoint = 0;
         }
 
         // Cキーでタイトル
@@ -61,10 +58,6 @@ public class ScoreSceneChangeDirectr : MonoBehaviour
 
             // ボタンのSE
             audioSource.PlayOneShot(buttonSE);
-
-            // スコアを初期化
-            ScoreDirector.enemyBreak = 0;
-            ScoreDirector.scorePoint = 0;
 
         }
     }

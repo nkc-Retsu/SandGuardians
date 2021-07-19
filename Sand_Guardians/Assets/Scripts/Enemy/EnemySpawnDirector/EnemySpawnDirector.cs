@@ -17,10 +17,19 @@ namespace Enemy
         /// </summary>
         enum SpawnScore
         {
-            spawnLancerScore = 500,
-            spawnKnightScore = 1000,
-            spawnBossScore   = 2000,
-            HardScore        = 5000,
+            spawnLancerScore      =   500,
+            spawnKnightScore      =  1000,
+            spawnBossScore        =  2000,
+            HardScore_Level_1     =  5000,
+            HardScore_Level_2     =  8000,
+            HardScore_Level_3     = 10000,
+            HardScore_Level_4     = 12000,
+            HardScore_Level_5     = 14000,
+            HardScore_Level_6     = 16000,
+            HardScore_Level_7     = 18000,
+            HardScore_Level_8     = 20000,
+            HardScore_Level_9     = 23000,
+            The_beginning_of_hell = 25000
         }
 
 
@@ -28,6 +37,9 @@ namespace Enemy
         [SerializeField] private GameObject enemyPorn;
         [SerializeField] private GameObject enemyLancer;
         [SerializeField] private GameObject enemyKnight;
+
+        // ScriptableOject取得用変数
+        [SerializeField] private EnemyStatus enemyStatus;
 
 
         // lerpのオブジェクトを取得する配列
@@ -80,17 +92,109 @@ namespace Enemy
 
             }
             // EnemyBossを出現可能にする
-            else if (ScoreDirector.scorePoint >= (int)SpawnScore.spawnBossScore && ScoreDirector.scorePoint >= (int)SpawnScore.spawnBossScore)
+            else if (ScoreDirector.scorePoint >= (int)SpawnScore.spawnBossScore && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_1)
             {
                 spawnLevel = 4;
                 timeCount = 1f;
 
             }
-            // Hardモード
-            else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore)
+            // Hard_Level_1
+            else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_1 && ScoreDirector.scorePoint <=(int)SpawnScore.HardScore_Level_2)
             {
                 timeCount = 0.5f;
             }
+            else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_2 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_3)
+            {
+                 if(ScoreDirector.scorePoint == (int)SpawnScore.HardScore_Level_2)
+                {
+                    enemyStatus.attackPower += 10;
+                    enemyStatus.hp          += 10;
+                    enemyStatus.enemyPoint  += 10;
+                }
+            }
+            else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_3 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_4)
+            {
+                if (ScoreDirector.scorePoint == (int)SpawnScore.HardScore_Level_3)
+                {
+                    enemyStatus.attackPower += 10;
+                    enemyStatus.hp += 10;
+                    enemyStatus.enemyPoint += 10;
+                }
+
+            }
+            else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_4 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_5)
+            {
+                if (ScoreDirector.scorePoint == (int)SpawnScore.HardScore_Level_4)
+                {
+                    enemyStatus.attackPower += 10;
+                    enemyStatus.hp += 10;
+                    enemyStatus.enemyPoint += 10;
+                }
+
+            }
+            else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_5 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_6)
+            {
+                if (ScoreDirector.scorePoint == (int)SpawnScore.HardScore_Level_5)
+                {
+                    enemyStatus.attackPower += 10;
+                    enemyStatus.hp += 10;
+                    enemyStatus.enemyPoint += 10;
+                }
+
+            }
+            else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_6 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_7)
+            {
+                if (ScoreDirector.scorePoint == (int)SpawnScore.HardScore_Level_6)
+                {
+                    enemyStatus.attackPower += 10;
+                    enemyStatus.hp += 10;
+                    enemyStatus.enemyPoint += 10;
+                }
+
+            }
+            else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_7 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_8)
+            {
+                if (ScoreDirector.scorePoint == (int)SpawnScore.HardScore_Level_7)
+                {
+                    enemyStatus.attackPower += 10;
+                    enemyStatus.hp += 10;
+                    enemyStatus.enemyPoint += 10;
+                }
+
+            }
+            else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_8 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_9)
+            {
+                if (ScoreDirector.scorePoint == (int)SpawnScore.HardScore_Level_8)
+                {
+                    enemyStatus.attackPower += 10;
+                    enemyStatus.hp += 10;
+                    enemyStatus.enemyPoint += 10;
+                }
+
+            }
+            else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_9 && ScoreDirector.scorePoint <= (int)SpawnScore.The_beginning_of_hell)
+            {
+                if (ScoreDirector.scorePoint == (int)SpawnScore.HardScore_Level_9)
+                {
+                    enemyStatus.attackPower += 10;
+                    enemyStatus.hp += 10;
+                    enemyStatus.enemyPoint += 10;
+                }
+
+            }
+            else if (ScoreDirector.scorePoint >= (int)SpawnScore.The_beginning_of_hell)
+            {
+                if (ScoreDirector.scorePoint == (int)SpawnScore.The_beginning_of_hell)
+                {
+                    enemyStatus.attackPower += 100;
+                    enemyStatus.hp += 10;
+                    enemyStatus.enemyPoint += 10;
+                }
+
+            }
+
+
+
         }
 
 

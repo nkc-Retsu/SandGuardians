@@ -13,7 +13,7 @@ namespace Enemy
         [SerializeField, Tooltip("体力")] 　　　             public int hp;
         [SerializeField, Tooltip("攻撃力")] 　　             public int attackPower;
         [SerializeField, Tooltip("移動の速さ")]              public float speed;
-        [SerializeField, Tooltip("手に入るスコアポイント")] public int enemyPoint;
+        [SerializeField, Tooltip("手に入るスコアポイント")]  public int enemyPoint;
     }
 
 }

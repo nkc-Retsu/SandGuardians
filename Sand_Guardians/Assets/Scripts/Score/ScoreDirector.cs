@@ -19,7 +19,9 @@ public class ScoreDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // ƒXƒRƒA‚ğ‰Šú‰»
+        scorePoint = 0;
+        enemyBreak = 0;
     }
 
     // Update is called once per frame

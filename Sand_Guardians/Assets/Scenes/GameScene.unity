@@ -893,6 +893,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hp
       objectReference: {fileID: 0}
+    - target: {fileID: 5900899485293083410, guid: 579e7057efdc4614ca8a04768bcb5215, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5900899485293083411, guid: 579e7057efdc4614ca8a04768bcb5215, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
@@ -929,9 +933,17 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5900899485321723376, guid: 579e7057efdc4614ca8a04768bcb5215, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5900899485321723390, guid: 579e7057efdc4614ca8a04768bcb5215, type: 3}
       propertyPath: m_Name
       value: GantzHp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900899485321723390, guid: 579e7057efdc4614ca8a04768bcb5215, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5900899485321723391, guid: 579e7057efdc4614ca8a04768bcb5215, type: 3}
       propertyPath: m_Pivot.x

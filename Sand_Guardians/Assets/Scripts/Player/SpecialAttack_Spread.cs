@@ -5,9 +5,13 @@ using Bridge;
 
 namespace Player
 {
-    public class PlayerSpecialAttack_Blue : MonoBehaviour
+    public class SpecialAttack_Spread : MonoBehaviour
     {
         IInputer inputer;
+
+        [SerializeField] private bool redFlg;
+        private BulletPool bulletPool;
+        [SerializeField] private GameObject poolObj;
 
         [SerializeField] GameObject spreadBullet; // ŠgŽU’e
         private Vector3 offsetPos; // ”­ŽËˆÊ’u
@@ -24,11 +28,13 @@ namespace Player
         private AudioSource audioSource;
         [SerializeField] AudioClip spreadShotSound;
 
+        [SerializeField] private int damage = 30;
+
         void Start()
         {
+            
             inputer = GetComponent<IInputer>();
-
-            inputer = GetComponent<IInputer>();
+            bulletPool = poolObj.GetComponent<BulletPool>();
             sPManager = GameObject.Find("SPManager");
             sPManager_cs = sPManager.GetComponent<SpecialPointManager>();
 
@@ -52,7 +58,13 @@ namespace Player
 
                 for (int i = 0; i < shotCount; ++i)
                 {
-                    Instantiate(spreadBullet, this.transform.position + offsetPos, Quaternion.Euler(rotate));
+                    GameObject bullet;
+                    bullet = (redFlg) ? bulletPool.GetRedBullet() : bulletPool.GetBlueBullet();
+                    bullet.SetActive(true);
+                    bullet.GetComponent<IDamageSettable>().SetDamage(damage);
+                    bullet.transform.position = transform.position + offsetPos;
+                    bullet.transform.localEulerAngles = rotate;
+                    //Instantiate(spreadBullet, this.transform.position + offsetPos, Quaternion.Euler(rotate));
                     rotate += new Vector3(0, 0, angle);
                 }
 

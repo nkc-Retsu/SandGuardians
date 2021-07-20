@@ -49,4 +49,11 @@ public class LaserScaleChange : MonoBehaviour
             transform.localScale -= new Vector3(3f * Time.deltaTime, 0, 0);
         }
     }
+
+    public void Reset()
+    {
+        timeSecondCounter = 0;
+        timeCounter2 = 0;
+    }
+
 }

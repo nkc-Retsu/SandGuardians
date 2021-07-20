@@ -24,7 +24,7 @@ namespace Player
         [SerializeField] private int[] powerTbl = new int[10]{ 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 };
         [SerializeField] private float[] speedTbl = new float[10] { 3.5f, 4f, 4.5f, 5f, 5.5f, 6f, 6.5f, 7f, 7.5f, 8f };
         [SerializeField] private float[] shotIntervalTbl = new float[10]{ 0.3f,0.275f, 0.25f, 0.225f, 0.2f, 0.175f, 0.15f, 0.125f, 0.1f, 0.075f };
-        [SerializeField] private float[] shotSpeedTbl = new float[10] { 3f, 3.5f, 4f, 4.5f, 5f, 5.5f, 6f, 6.5f, 7f, 7.5f };
+        [SerializeField] private float[] shotSpeedTbl = new float[10] { 4f, 4.5f, 5f, 5.5f, 6f, 6.5f, 7f, 7.5f, 8f, 8.5f };
 
         private int spAttackType = 1;
 
@@ -39,6 +39,7 @@ namespace Player
         {
             LASER,
             SPREAD,
+            SHIELD,
             COUNT
         }
 
@@ -59,6 +60,11 @@ namespace Player
                 shotSpeed = shotSpeedTbl[dbgShotSpeedLvl];
             }
 
+            if (gameObject.name == "Player_Red")
+            {
+                redFlg = true;
+            }
+
             iSpAttackTypeGettable = new SpecialAttackChanger();
             spAttackType = (redFlg) ? iSpAttackTypeGettable.GetSpAttackType_Red() : iSpAttackTypeGettable.GetSpAttackType_Blue();
 
@@ -69,6 +75,11 @@ namespace Player
                     break;
                 case ((int)SPECIAL.SPREAD):
                     gameObject.AddComponent<SpecialAttack_Spread>();
+                    break;
+                case ((int)SPECIAL.SHIELD):
+                    gameObject.AddComponent<SpecialAttack_Shield>();
+                    break;
+                default:
                     break;
             }
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Bridge;
 
 public class ScoreSceneChangeDirectr : MonoBehaviour
 {
@@ -16,12 +17,17 @@ public class ScoreSceneChangeDirectr : MonoBehaviour
     [SerializeField] private AudioClip buttonSE;
     private AudioSource audioSource;
 
+    private IAddExp iAddExp;
+
 
     // Start is called before the first frame update
     void Start()
     {
         // コンポーネント取得
         audioSource = GetComponent<AudioSource>();
+
+        iAddExp = new StatusChanger();
+        iAddExp.AddExp(ScoreDirector.scorePoint);
     }
 
     // Update is called once per frame
@@ -54,7 +60,7 @@ public class ScoreSceneChangeDirectr : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             // シーン遷移
-            FadeManager.Instance.LoadScene("TitleScene", 0.5f);
+            FadeManager.Instance.LoadScene("StartMenuScene", 0.5f);
 
             // ボタンのSE
             audioSource.PlayOneShot(buttonSE);

@@ -126,7 +126,7 @@ namespace Enemy
             
             randMax = 4;
 
-            levelText.text = "LEVEL " + level.ToString() + 1; 
+            levelText.text = "LEVEL " + level.ToString("F") + 1; 
 
         }
 
@@ -197,6 +197,7 @@ namespace Enemy
 
 
                     levelText.text = "LEVEL " + level + 1;
+                    Debug.Log(level);
 
                 }
             }

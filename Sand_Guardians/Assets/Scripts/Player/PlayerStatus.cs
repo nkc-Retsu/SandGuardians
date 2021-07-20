@@ -7,6 +7,8 @@ namespace Player
 {
     public class PlayerStatus : MonoBehaviour,IStatusGettable
     {
+        // ステータステーブル[ステータスレベル] がステータスになる
+
         private int power = 0;
         private float speed = 0;
         private float shotInterval = 0;
@@ -68,6 +70,7 @@ namespace Player
             iSpAttackTypeGettable = new SpecialAttackChanger();
             spAttackType = (redFlg) ? iSpAttackTypeGettable.GetSpAttackType_Red() : iSpAttackTypeGettable.GetSpAttackType_Blue();
 
+            // 必殺技の設定
             switch (spAttackType)
             {
                 case ((int)SPECIAL.LASER):

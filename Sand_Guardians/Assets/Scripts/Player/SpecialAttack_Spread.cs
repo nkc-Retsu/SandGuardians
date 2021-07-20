@@ -70,12 +70,12 @@ namespace Player
                 {
                     GameObject bullet;
                     bullet = (redFlg) ? bulletPool.GetRedBullet() : bulletPool.GetBlueBullet();
-                    Debug.Log("aaaaa");
                     bullet.SetActive(true);
                     bullet.transform.position = transform.position + offsetPos;
                     bullet.transform.localEulerAngles = rotate;
                     //Instantiate(spreadBullet, this.transform.position + offsetPos, Quaternion.Euler(rotate));
                     rotate += new Vector3(0, 0, angle);
+                    // ”­ŽËŠp‚ð‰ÁŽZ
                 }
 
                 audioSource.PlayOneShot(spreadShotSound);

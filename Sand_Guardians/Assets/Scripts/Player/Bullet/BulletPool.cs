@@ -5,17 +5,22 @@ using Bridge;
 
 public class BulletPool : MonoBehaviour, IGetBullet
 {
+    // オブジェクトプール
+
     [SerializeField] GameObject redBullet;
     [SerializeField] GameObject blueBullet;
     [SerializeField] GameObject redBulletParent;
     [SerializeField] GameObject blueBulletParent;
+    // リスト
     private List<GameObject> redBulletList;
     private List<GameObject> blueBulletList;
 
+    // 最初は10コ生成
     private const int MAX_COUNT = 10;
 
     private void Awake()
     {
+        // プールを作成
         CreatePool();   
     }
 
@@ -35,6 +40,8 @@ public class BulletPool : MonoBehaviour, IGetBullet
 
     public GameObject GetRedBullet()
     {
+        // 非アクティブなオブジェクトが無かったら生成
+
         foreach(var obj in redBulletList)
         {
             if(obj.activeSelf==false)
@@ -52,7 +59,9 @@ public class BulletPool : MonoBehaviour, IGetBullet
 
     public GameObject GetBlueBullet()
     {
-        foreach(var obj in blueBulletList)
+        // 非アクティブなオブジェクトが無かったら生成
+
+        foreach (var obj in blueBulletList)
         {
             if(obj.activeSelf==false)
             {

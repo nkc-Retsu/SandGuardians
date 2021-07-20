@@ -17,7 +17,7 @@ namespace Player
         private  GameObject sPManager;
         SpecialPointManager sPManager_cs;
 
-        private int useSP = 5;
+        private int useSP = 5; // 使用ポイント
 
         private AudioSource audioSource;
         [SerializeField] private AudioClip laserSound;

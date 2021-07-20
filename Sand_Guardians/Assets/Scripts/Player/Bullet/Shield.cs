@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
+    // ŠÔ‚ÅÁ‚¦‚éƒV[ƒ‹ƒh
+
     [SerializeField] private float appearTime = 10f;
     private float timeCounter = 0;
     void Start()

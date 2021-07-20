@@ -719,7 +719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6306059353155975355, guid: a5439ae52933c8b44b444a496e01d1e4, type: 3}
       propertyPath: debugFlg
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6306059353155975355, guid: a5439ae52933c8b44b444a496e01d1e4, type: 3}
       propertyPath: dbgPowerLvl
@@ -2212,7 +2212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3332629773426227546, guid: 226edaf47d233a04bbfe6dbb76c3b813, type: 3}
       propertyPath: debugFlg
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3332629773426227546, guid: 226edaf47d233a04bbfe6dbb76c3b813, type: 3}
       propertyPath: dbgPowerLvl
@@ -2525,7 +2525,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -214.30005, y: 177.1}
+  m_AnchoredPosition: {x: -214.30003, y: 177.1}
   m_SizeDelta: {x: -640.19385, y: -214.86069}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1622512356

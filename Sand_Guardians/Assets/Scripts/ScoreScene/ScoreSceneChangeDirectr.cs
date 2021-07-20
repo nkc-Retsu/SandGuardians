@@ -60,7 +60,7 @@ public class ScoreSceneChangeDirectr : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             // シーン遷移
-            FadeManager.Instance.LoadScene("TitleScene", 0.5f);
+            FadeManager.Instance.LoadScene("StartMenuScene", 0.5f);
 
             // ボタンのSE
             audioSource.PlayOneShot(buttonSE);

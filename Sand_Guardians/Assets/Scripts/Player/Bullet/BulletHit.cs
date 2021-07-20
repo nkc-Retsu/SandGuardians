@@ -34,7 +34,7 @@ public class BulletHit : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
 
-        if (col.gameObject.name == "Gantz" || col.gameObject.tag=="Bullet") return;
+        if (col.gameObject.name == "Gantz" || col.gameObject.tag=="Bullet" || col.gameObject.tag=="Shield") return;
 
         IP2EAttack p2EAttack = col.gameObject.GetComponent<IP2EAttack>();
         if (p2EAttack == null)

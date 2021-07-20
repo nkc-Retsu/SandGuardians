@@ -22,32 +22,38 @@ namespace Player
         private AudioSource audioSource;
         [SerializeField] private AudioClip laserSound;
 
-        [SerializeField] private Sprite red;
-        [SerializeField] private Sprite blue;
+        private Sprite red;
+        private Sprite blue;
 
         private void Awake()
         {
-            laserBeam = (GameObject)Resources.Load("LaserBeam");
+            //red = (Sprite)Resources.Load("Laser[0]");
+            //blue = (Sprite)Resources.Load("Laser[1]");
+
         }
 
         void Start()
         {
+            if (gameObject.name == "Player_Red")
+            {
+                redFlg = true;
+            }
+
             inputer = GetComponent<IInputer>();
             sPManager = GameObject.Find("SPManager");
             sPManager_cs = sPManager.GetComponent<SpecialPointManager>();
             //laserBeam = Resources.Load<GameObject>("Prefabs/LaserBeam");
             audioSource = GetComponent<AudioSource>();
 
+
+            laserBeam = (redFlg) ? (GameObject)Resources.Load("LaserBeam_Red") : (GameObject)Resources.Load("LaserBeam_Blue");
+
+
             laserObj = Instantiate(laserBeam, this.transform.position + offsetPos, Quaternion.Euler(transform.localEulerAngles));
-            laserObj.GetComponent<SpriteRenderer>().sprite = (redFlg) ? red : blue;
+            //laserObj.GetComponent<SpriteRenderer>().sprite = (redFlg) ? red : blue;
             laserObj.GetComponent<LaserBeam>().SetPlayer(gameObject);
             laserObj.SetActive(false);
 
-
-            if (gameObject.name == "Player_Red")
-            {
-                redFlg = true;
-            }
         }
 
         void Update()
@@ -68,6 +74,7 @@ namespace Player
             {
                 offsetPos = transform.up * offsetRate;
                 laserObj.SetActive(true);
+                //laserObj.GetComponent<SpriteRenderer>().sprite = (redFlg) ? red : blue;
                 laserObj.transform.position = transform.position;
                 laserObj.transform.localEulerAngles = transform.localEulerAngles;
                 audioSource.PlayOneShot(laserSound);

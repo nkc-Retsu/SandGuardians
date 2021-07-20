@@ -22,7 +22,7 @@ public class SceneChangetoGS : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             // シーン遷移
-            FadeManager.Instance.LoadScene("GameScene", 0.5f);
+            FadeManager.Instance.LoadScene("StartMenuScene", 0.5f);
 
             // ボタンSE
             audioSource.PlayOneShot(buttonSE);

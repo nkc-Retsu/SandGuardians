@@ -64,7 +64,7 @@ public class StratMenuCon : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.X))
             {
-
+                FadeManager.Instance.LoadScene("CustomizeScene", 0.5f);
             }
 
         }

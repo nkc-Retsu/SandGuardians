@@ -8,7 +8,7 @@ namespace Bridge
 
         float GetSpeed();
 
-        float GetShotSpan();
+        float GetShotInterval();
 
         float GetShotSpeed();
     }

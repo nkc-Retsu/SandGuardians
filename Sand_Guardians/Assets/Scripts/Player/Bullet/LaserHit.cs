@@ -17,7 +17,7 @@ public class LaserHit : MonoBehaviour
         }
         else
         {
-            p2EAttack.ToEnemyAttack(10,ref isDefeat);
+            p2EAttack.ToEnemyAttack(laserDamage,ref isDefeat);
         }
 
     }

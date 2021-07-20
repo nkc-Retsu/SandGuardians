@@ -8,31 +8,41 @@ namespace Player
     public class SpecialAttack_Laser : MonoBehaviour
     {
         IInputer inputer;
-
+        GameObject laserObj;
         private bool redFlg = false;
         private GameObject laserBeam;
         private Vector3 offsetPos; // î≠éÀà íu
         private float offsetRate = 0.2f; // î≠éÀà íuí≤êÆóp
 
-        GameObject sPManager;
+        private  GameObject sPManager;
         SpecialPointManager sPManager_cs;
 
         private int useSP = 5;
 
         private AudioSource audioSource;
-        private AudioClip laserSound;
+        [SerializeField] private AudioClip laserSound;
 
-        public Sprite red;
-        public Sprite blue;
+        [SerializeField] private Sprite red;
+        [SerializeField] private Sprite blue;
+
+        private void Awake()
+        {
+            laserBeam = (GameObject)Resources.Load("LaserBeam");
+        }
 
         void Start()
         {
             inputer = GetComponent<IInputer>();
             sPManager = GameObject.Find("SPManager");
             sPManager_cs = sPManager.GetComponent<SpecialPointManager>();
-            laserBeam = Resources.Load<GameObject>("Prefabs/LaserBeam");
-            laserSound = Resources.Load<AudioClip>("SE/LaserSE");
+            //laserBeam = Resources.Load<GameObject>("Prefabs/LaserBeam");
             audioSource = GetComponent<AudioSource>();
+
+            laserObj = Instantiate(laserBeam, this.transform.position + offsetPos, Quaternion.Euler(transform.localEulerAngles));
+            laserObj.GetComponent<SpriteRenderer>().sprite = (redFlg) ? red : blue;
+            laserObj.GetComponent<LaserBeam>().SetPlayer(gameObject);
+            laserObj.SetActive(false);
+
 
             if (gameObject.name == "Player_Red")
             {
@@ -44,12 +54,10 @@ namespace Player
         {
             if (redFlg)
             {
-                laserBeam.GetComponent<SpriteRenderer>().sprite = red;
                 if (inputer.SpecialAttack_Red()) LaserBeam();
             }
             else
             {
-                laserBeam.GetComponent<SpriteRenderer>().sprite = blue;
                 if (inputer.SpecialAttack_Blue()) LaserBeam();
             }
         }
@@ -59,8 +67,9 @@ namespace Player
             if (sPManager_cs.UsePoint(useSP))
             {
                 offsetPos = transform.up * offsetRate;
-                GameObject laserObj = Instantiate(laserBeam, this.transform.position + offsetPos, Quaternion.Euler(transform.localEulerAngles));
-                laserObj.GetComponent<LaserBeam>().SetPlayer(gameObject);
+                laserObj.SetActive(true);
+                laserObj.transform.position = transform.position;
+                laserObj.transform.localEulerAngles = transform.localEulerAngles;
                 audioSource.PlayOneShot(laserSound);
             }
             else return;

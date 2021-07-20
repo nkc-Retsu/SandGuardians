@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Bridge;
 
-public class BulletHit : MonoBehaviour, IDamageSettable
+public class BulletHit : MonoBehaviour
 {
-    [SerializeField] private int damage = 10;
+    private GameObject playerObj;
+    [SerializeField] private bool redFlg;
+
+    private int damage = 10;
 
     private bool isDefeat = false;
 
@@ -14,13 +17,15 @@ public class BulletHit : MonoBehaviour, IDamageSettable
     private GameObject spManager;
     private SpecialPointManager spManager_cs;
 
-    public void SetDamage(int damage)
+    private void Awake()
     {
-        this.damage = damage;
+        playerObj = (redFlg) ? GameObject.Find("Player_Red") : GameObject.Find("Player_Blue");
     }
 
     private void Start()
     {
+        damage = playerObj.GetComponent<IStatusGettable>().GetDamage();
+
         spManager = GameObject.Find("SPManager");
         spManager_cs = spManager.GetComponent<SpecialPointManager>();
     }

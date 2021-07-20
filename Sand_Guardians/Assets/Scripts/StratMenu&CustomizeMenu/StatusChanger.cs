@@ -15,6 +15,7 @@ public class StatusChanger : MonoBehaviour, ILevelGettable,IAddExp
         NUM
     }
 
+
     [SerializeField] private GameObject cursorObj;
     private static int exp = 0;
     [SerializeField] private Text expTxt;
@@ -35,6 +36,10 @@ public class StatusChanger : MonoBehaviour, ILevelGettable,IAddExp
 
     [SerializeField] private int[] useExpTable = new int[9] { 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000 };
 
+    [SerializeField] private AudioClip selectSound;
+    [SerializeField] private AudioClip changeSound;
+    private AudioSource audioSource;
+ 
     public int GetPowerLevel() { return powerLvl; }
     public int GetShotSpeedLevel() { return shotSpeedLvl; }
     public int GetShotIntervalLevel() { return shotIntervalLvl; }
@@ -42,12 +47,23 @@ public class StatusChanger : MonoBehaviour, ILevelGettable,IAddExp
 
     public void AddExp(int point)
     {
-        exp += point;
+        exp = point;
     }
 
+    private void Awake()
+    {
+        // PlayerPrefsは保存場所がよろしくないため使用しない
+
+        //if (PlayerPrefs.HasKey("EXP"))
+        //{
+        //    Load();
+        //}
+    }
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         expTxt.text = exp.ToString();
 
 
@@ -89,6 +105,7 @@ public class StatusChanger : MonoBehaviour, ILevelGettable,IAddExp
                 stateNum--;
                 stateNum = (stateNum + (int)STATUS.NUM) % (int)STATUS.NUM;
                 cursorObj.transform.position -= new Vector3(0, -1.48f, 0);
+                audioSource.PlayOneShot(selectSound);
             }
 
         }
@@ -99,6 +116,7 @@ public class StatusChanger : MonoBehaviour, ILevelGettable,IAddExp
                 stateNum++;
                 stateNum = (stateNum + (int)STATUS.NUM) % (int)STATUS.NUM;
                 cursorObj.transform.position -= new Vector3(0, 1.48f, 0);
+                audioSource.PlayOneShot(selectSound);
             }
 
         }
@@ -107,16 +125,19 @@ public class StatusChanger : MonoBehaviour, ILevelGettable,IAddExp
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             StatusUpDown(true);
+            audioSource.PlayOneShot(changeSound);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             StatusUpDown(false);
+            audioSource.PlayOneShot(changeSound);
         }
     }
 
     private void StatusUpDown(bool isIncrease)
     {
+        // ステータス加算は1,減算は-1
         int i = (isIncrease) ? 1 : -1;
 
         switch (stateNum)
@@ -168,10 +189,13 @@ public class StatusChanger : MonoBehaviour, ILevelGettable,IAddExp
             default:
                 break;
         }
+
+        //Save();
     }
 
     private void CellArrActive(int lvl,GameObject[] arr)
     {
+        // ゲージ
         for(int i=0;i<=lvl;++i)
         {
             arr[i].SetActive(true);
@@ -185,6 +209,7 @@ public class StatusChanger : MonoBehaviour, ILevelGettable,IAddExp
 
     private void ExpChange(bool isIncrease,int afterLvl)
     {
+        // 経験値
         if(isIncrease)
         {
             exp -= useExpTable[afterLvl - 1];
@@ -197,4 +222,21 @@ public class StatusChanger : MonoBehaviour, ILevelGettable,IAddExp
         expTxt.text = exp.ToString();
     }
 
+    //private void Load()
+    //{
+    //    exp += PlayerPrefs.GetInt("EXP");
+    //    powerLvl = PlayerPrefs.GetInt("PowerLevel");
+    //    shotSpeedLvl = PlayerPrefs.GetInt("ShotSpeedLevel");
+    //    shotIntervalLvl = PlayerPrefs.GetInt("ShotIntervalLevel");
+    //    speedLvl = PlayerPrefs.GetInt("SpeedLevel");
+    //}
+
+    //private void Save()
+    //{
+    //    PlayerPrefs.SetInt("EXP", exp);
+    //    PlayerPrefs.SetInt("PowerLevel", powerLvl);
+    //    PlayerPrefs.SetInt("ShotSpeedLevel", shotSpeedLvl);
+    //    PlayerPrefs.SetInt("ShotIntervalLevel", shotIntervalLvl);
+    //    PlayerPrefs.SetInt("SpeedLevel", speedLvl);
+    //}
 }

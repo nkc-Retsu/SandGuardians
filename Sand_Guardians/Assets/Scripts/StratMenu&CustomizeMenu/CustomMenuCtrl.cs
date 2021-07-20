@@ -16,6 +16,7 @@ public class CustomMenuCtrl : MonoBehaviour
     [SerializeField] private GameObject statusChanger;
     [SerializeField] private GameObject spAttackChanger;
 
+
     void Start()
     {
         mainCameraObj.transform.position = new Vector3(0,0,-10);

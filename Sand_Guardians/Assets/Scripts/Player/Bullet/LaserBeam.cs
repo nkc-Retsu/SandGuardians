@@ -22,6 +22,7 @@ public class LaserBeam : MonoBehaviour
     float sr_size_y = 1;
     void Start()
     {
+        // サイズの初期化
         laserScaleChange = GetComponent<LaserScaleChange>();
 
         sr_size_y = 1;
@@ -40,6 +41,8 @@ public class LaserBeam : MonoBehaviour
 
     void Update()
     {
+        // レーザーを伸ばす
+
         sr_size_y += Time.deltaTime*laserSpeed;
         sr.size = new Vector2(1.5f, sr_size_y);
         transform.position = player.transform.position;
@@ -52,6 +55,7 @@ public class LaserBeam : MonoBehaviour
 
         if(transform.localScale.x<=0)
         {
+            // 破棄
             laserScaleChange.Reset();
 
             transform.localScale = defaultScale;

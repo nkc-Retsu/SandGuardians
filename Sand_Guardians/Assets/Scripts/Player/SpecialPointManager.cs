@@ -12,6 +12,7 @@ public class SpecialPointManager : MonoBehaviour
 
     void Start()
     {
+        // ゲージの中身を非表示に
         for(int i=0;i<powerGaugeCell.Length;++i)
         {
             powerGaugeCell[i].SetActive(false);
@@ -25,6 +26,7 @@ public class SpecialPointManager : MonoBehaviour
 
     public void AddPoint()
     {
+        // ポイント加算
         if(specialPoint<SPECIAL_POINT_MAX)
         {
             specialPoint++;
@@ -35,6 +37,7 @@ public class SpecialPointManager : MonoBehaviour
 
     public bool UsePoint(int point)
     {
+        // ポイント使用
         if(specialPoint<point)
         {
             return false;

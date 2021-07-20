@@ -6,6 +6,8 @@ namespace Player
 {
     public class KeyboardInputer : MonoBehaviour ,IInputer
     {
+        // キーボード操作時の入力処理
+
         private void Update()
         {
             Attack();

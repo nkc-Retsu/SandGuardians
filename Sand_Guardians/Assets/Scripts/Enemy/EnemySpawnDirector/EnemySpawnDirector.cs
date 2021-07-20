@@ -126,7 +126,7 @@ namespace Enemy
             
             randMax = 4;
 
-            levelText.text = "LEVEL " + level.ToString("F") + 1; 
+            levelText.text = "LEVEL " + level.ToString() + 1; 
 
         }
 
@@ -151,8 +151,8 @@ namespace Enemy
             if (ScoreDirector.scorePoint >= (int)SpawnScore.spawnLancerScore && ScoreDirector.scorePoint < (int)SpawnScore.spawnKnightScore)
             {
                 spawnLevel = 2;
-                randMax = 8;
-                timeCount = 3f;
+                randMax    = 8;
+                timeCount  = 3f;
 
             }
             // EnemyKnightを出現可能にする
@@ -175,8 +175,7 @@ namespace Enemy
             // Hard_Level_1
             if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_1 && ScoreDirector.scorePoint <=(int)SpawnScore.HardScore_Level_2)
             {
-                Debug.Log("レベル1");
-                timeCount = 2f;
+                timeCount = 1.5f;
             }
             else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_2 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_3)
             {
@@ -207,6 +206,7 @@ namespace Enemy
                 {
                     Debug.Log("レベル3");
                     level = levelTable[2];
+                    timeCount = 1f;
 
                     EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
                     EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
@@ -311,6 +311,7 @@ namespace Enemy
                 {
                     Debug.Log("The_beginning_of_hell");
                     level = levelTable[7];
+                    timeCount = 0.5f;
 
                     EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
                     EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);

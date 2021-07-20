@@ -18,19 +18,19 @@ namespace Enemy
         /// </summary>
         enum SpawnScore
         {
-            spawnLancerScore      =   500,
-            spawnKnightScore      =  1000,
-            spawnBossScore        =  2000,
-            HardScore_Level_1     =  5000,
-            HardScore_Level_2     =  7000,
-            HardScore_Level_3     = 10000,
-            HardScore_Level_4     = 12000,
-            HardScore_Level_5     = 14000,
-            HardScore_Level_6     = 16000,
-            HardScore_Level_7     = 18000,
-            HardScore_Level_8     = 20000,
-            HardScore_Level_9     = 23000,
-            The_beginning_of_hell = 25000
+            spawnLancerScore      =    500,
+            spawnKnightScore      =   1000,
+            spawnBossScore        =   2000,
+            HardScore_Level_1     =   3000,
+            HardScore_Level_2     =   7000,
+            HardScore_Level_3     =  12000,
+            HardScore_Level_4     =  20000,
+            HardScore_Level_5     =  30000,
+            HardScore_Level_6     =  42000,
+            HardScore_Level_7     =  60000,
+            HardScore_Level_8     =  85000,
+            HardScore_Level_9     = 110000,
+            The_beginning_of_hell = 150000
         }
 
         //”{—¦

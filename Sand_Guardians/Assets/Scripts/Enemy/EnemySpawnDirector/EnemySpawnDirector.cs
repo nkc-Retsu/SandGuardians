@@ -60,22 +60,22 @@ namespace Enemy
 
 
         // PornのLevel別のステータス
-        [SerializeField] private int[]   attackTable_Porn   = { };
-        [SerializeField] private int[]   hpTable_Porn       = { };
-        [SerializeField] private float[] speedTable_Porn    = { };
-        [SerializeField] private int[]   pointTable_Porn    = { };
+        [Header("Pornの攻撃力"),SerializeField]    private int[]   attackTable_Porn   = { };
+        [Header("PornのHP"), SerializeField]       private int[]   hpTable_Porn       = { };
+        [Header("Pornのスピード"), SerializeField] private float[] speedTable_Porn    = { };
+        [Header("Pornのポイント"), SerializeField] private int[]   pointTable_Porn    = { };
 
         // LancerのLevel別のステータス
-        [SerializeField] private int[]   attackTable_Lancer = { };
-        [SerializeField] private int[]   hpTable_Lancer     = { };
-        [SerializeField] private float[] speedTable_Lancer  = { };
-        [SerializeField] private int[]   pointTable_Lancer  = { };
+        [Header("Lancerの攻撃力"), SerializeField]   private int[]   attackTable_Lancer = { };
+        [Header("LancerのHP"), SerializeField]       private int[]   hpTable_Lancer     = { };
+        [Header("Lancerのスピード"), SerializeField] private float[] speedTable_Lancer  = { };
+        [Header("Lancerのポイント"), SerializeField] private int[]   pointTable_Lancer  = { };
 
         // KnightのLevel別のステータス
-        [SerializeField] private int[]   attackTable_Knight = { };
-        [SerializeField] private int[]   hpTable_Knight     = { };
-        [SerializeField] private float[] speedTable_Knight  = { };
-        [SerializeField] private int[]   pointTable_Knight  = { };
+        [Header("Knightの攻撃力"), SerializeField] 　private int[]   attackTable_Knight = { };
+        [Header("KnightのHP"), SerializeField] 　　　private int[]   hpTable_Knight     = { };
+        [Header("Knightのスピード"), SerializeField] private float[] speedTable_Knight  = { };
+        [Header("Knightのポイント"), SerializeField] private int[]   pointTable_Knight  = { };
 
 
         // 変更用Sprite変数
@@ -126,8 +126,8 @@ namespace Enemy
             
             randMax = 4;
 
-            levelText.text = "LEVEL " + level.ToString() + 1; 
-
+            levelText.text = "LEVEL " + level.ToString("D") + 1;
+            Debug.Log(levelText);
         }
 
         // Update is called once per frame

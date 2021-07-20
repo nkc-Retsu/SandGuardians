@@ -18,8 +18,8 @@ namespace Enemy
         [SerializeField] private GameObject center = null;
 
         // 回転用変数
-        [SerializeField, Tooltip("出現する位置")]   private float angle = 0.0f;
-        [SerializeField, Tooltip("中心からの距離")] private float radius = 2.0f;
+        [SerializeField, Tooltip("出現する位置")]   private float angle       =   0.0f;
+        [SerializeField, Tooltip("中心からの距離")] private float radius      =   2.0f;
         [SerializeField, Tooltip("中心からの距離")] private float returnSpeed = 0.003f;
 
         private float speed;
@@ -34,6 +34,7 @@ namespace Enemy
         {
             // メソッド呼び出し
             Move();
+            RotateDefalt();
         }
 
 
@@ -75,5 +76,10 @@ namespace Enemy
 
         }
 
+
+        private void RotateDefalt()
+        {
+            transform.Rotate(0, 0, 5f);
+        }
     }
 }

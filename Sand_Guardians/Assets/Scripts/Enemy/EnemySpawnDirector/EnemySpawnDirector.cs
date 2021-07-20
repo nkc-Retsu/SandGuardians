@@ -162,9 +162,6 @@ namespace Enemy
             // EnemyLancerを出現可能にする
             if (ScoreDirector.scorePoint >= (int)SpawnScore.spawnLancerScore && ScoreDirector.scorePoint < (int)SpawnScore.spawnKnightScore)
             {
-                // 出現可能にする
-                //spawnLevel = 2;
-
                 // ランダム最大値を変更
                 randMax    = 8;
 
@@ -175,9 +172,6 @@ namespace Enemy
             // EnemyKnightを出現可能にする
             else if (ScoreDirector.scorePoint >= (int)SpawnScore.spawnKnightScore && ScoreDirector.scorePoint < (int)SpawnScore.spawnBossScore)
             {
-                // 出現可能にする
-                // spawnLevel = 3;
-
                 // ランダム最大値を変更
                 randMax = 10;
 
@@ -444,6 +438,7 @@ namespace Enemy
         // Pornのステータスを変更
         private void EnemyStateChange_Porn(int hp, int attack, float speed,int point)
         {
+
             enemyStatus_Porn.attackPower = attack;
             enemyStatus_Porn.speed       = speed;
             enemyStatus_Porn.hp          = hp;

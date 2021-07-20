@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Player
 {
+    // 入力関連のインターフェイス
     interface IInputer
     {
         float Move();

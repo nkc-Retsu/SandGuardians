@@ -17,11 +17,13 @@ public class BulletMove : MonoBehaviour
 
     private void Start()
     {
+        // スピード取得
         this.speed = playerObj.GetComponent<IStatusGettable>().GetShotSpeed();
     }
 
     void Update()
     {
+        // 移動
         transform.position += transform.up.normalized * speed * Time.deltaTime;
     }
 }

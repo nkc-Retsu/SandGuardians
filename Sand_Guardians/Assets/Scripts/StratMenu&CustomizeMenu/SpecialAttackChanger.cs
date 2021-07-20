@@ -29,6 +29,14 @@ public class SpecialAttackChanger : MonoBehaviour,ISpAttackTypeGettable
 
     private bool inputFlg = true;
 
+    private void Awake()
+    {
+        //if(PlayerPrefs.HasKey("spAttackType_Red") || PlayerPrefs.HasKey("spAttackType_Blue"))
+        //{
+        //    Load();
+        //}
+    }
+
     void Start()
     {
         if (spAttackType_Red == 1) iconGroup_Red.transform.position += iconMoveVec;
@@ -100,6 +108,7 @@ public class SpecialAttackChanger : MonoBehaviour,ISpAttackTypeGettable
             Debug.Log("blue" + spAttackType_Blue);
         }
 
+        //Save();
     }
 
     private void InputFlgChange()
@@ -116,4 +125,16 @@ public class SpecialAttackChanger : MonoBehaviour,ISpAttackTypeGettable
     {
         return spAttackType_Blue;
     }
+
+    //private void Load()
+    //{
+    //    spAttackType_Red = PlayerPrefs.GetInt("spAttackType_Red");
+    //    spAttackType_Blue = PlayerPrefs.GetInt("spAttackType_Blue");
+    //}
+
+    //private void Save()
+    //{
+    //    PlayerPrefs.SetInt("spAttackType_Red", spAttackType_Red);
+    //    PlayerPrefs.SetInt("spAttackType_Blue", spAttackType_Blue);
+    //}
 }

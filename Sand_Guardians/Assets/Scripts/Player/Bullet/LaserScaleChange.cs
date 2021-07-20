@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LaserScaleChange : MonoBehaviour
 {
+    // ƒŒ[ƒU[‚Ì‘¾‚³‚ğ•Ï‚¦‚½‚è‚·‚éˆ—
+
     private bool isAppearing;
     private bool isExpanding = false;
     //[SerializeField] private float scaleChangeRate = 3f;

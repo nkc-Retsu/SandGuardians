@@ -33,6 +33,9 @@ namespace Enemy
             The_beginning_of_hell = 25000
         }
 
+        //倍率
+        [SerializeField] float magnification = 1.1f;
+
 
         // EnemyObject取得用変数
         [SerializeField] private GameObject enemyPorn;
@@ -87,6 +90,7 @@ namespace Enemy
         private int level;
 
 
+
         // スポーンレベル変数
         private int spawnLevel = 1;
 
@@ -101,9 +105,14 @@ namespace Enemy
         // Start is called before the first frame update
         void Start()
         {
+            //for (int i = 0; i < attackTable_Knight.Length; ++i)
+            //{
+            //    attackTable_Knight[i] = attackTable_Knight[i-1] * magnification;
+            //}
+
 
             // コンポーネント取得
-            sr_Porn    = enemyPorn.GetComponent<SpriteRenderer>();
+            sr_Porn = enemyPorn.GetComponent<SpriteRenderer>();
             sr_Lanacer = enemyLancer.GetComponent<SpriteRenderer>();
             sr_Knight  = enemyKnight.GetComponent<SpriteRenderer>();
 
@@ -428,6 +437,16 @@ namespace Enemy
             enemyStatus_Knight.hp = hp;
             enemyStatus_Knight.enemyPoint = point;
         }
+
+
+        //一律ｎ倍
+        //private int SetLevel(int[] gotArray)
+        //{
+        //    for(int i = 0; i < gotArray.Length; ++i)
+        //    {
+
+        //    }
+        //}
     }
 
 }

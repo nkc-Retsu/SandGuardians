@@ -52,7 +52,7 @@ public class StratMenuCon : MonoBehaviour
 
             if(Input.GetKeyDown(KeyCode.X))
             {
-                FadeManager.Instance.LoadScene("MiwaScene", 0.5f);
+                FadeManager.Instance.LoadScene("GameScene", 0.5f);
             }
 
         }

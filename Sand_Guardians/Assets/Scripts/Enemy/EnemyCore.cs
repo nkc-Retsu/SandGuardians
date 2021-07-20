@@ -87,7 +87,7 @@ namespace Enemy
         // 当たり判定処理(甘えました)
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(collision.gameObject.tag == "Sheider")
+            if(collision.gameObject.tag == "Shield")
             {
                 // 爆発オブジェクトを生成
                 Instantiate(bombObj).transform.position = transform.position;

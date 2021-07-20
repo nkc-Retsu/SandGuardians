@@ -19,8 +19,6 @@ namespace Player
         private float timeSecondCounter = 0; // タイマー
         [SerializeField] private float attackSpan = 0.2f;　// 発射間隔
 
-        [SerializeField] private int damage = 3;
-
         private AudioSource audioSource;
         [SerializeField] AudioClip shotSound;
 
@@ -28,6 +26,7 @@ namespace Player
         {
             // コンポーネント取得
             inputer = GetComponent<IInputer>();
+            attackSpan = GetComponent<IStatusGettable>().GetShotInterval();
             bulletPool = poolObj.GetComponent<BulletPool>();
             audioSource = GetComponent<AudioSource>();
         }
@@ -54,7 +53,6 @@ namespace Player
             bullet = (redFlg) ? bulletPool.GetRedBullet() : bulletPool.GetBlueBullet();
             
             bullet.SetActive(true);
-            bullet.GetComponent<IDamageSettable>().SetDamage(damage);
             bullet.transform.position = transform.position + offsetPos;
             bullet.transform.localEulerAngles = transform.localEulerAngles;
             audioSource.PlayOneShot(shotSound); // 音

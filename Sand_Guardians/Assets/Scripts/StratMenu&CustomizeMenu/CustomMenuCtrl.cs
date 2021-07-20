@@ -37,5 +37,10 @@ public class CustomMenuCtrl : MonoBehaviour
             statusChanger.SetActive(true);
             spAttackChanger.SetActive(false);
         }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            FadeManager.Instance.LoadScene("StartMenuScene", 0.5f);
+        }
     }
 }

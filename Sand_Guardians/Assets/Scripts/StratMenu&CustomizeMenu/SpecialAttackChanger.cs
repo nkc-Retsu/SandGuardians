@@ -31,7 +31,11 @@ public class SpecialAttackChanger : MonoBehaviour,ISpAttackTypeGettable
 
     void Start()
     {
-        
+        if (spAttackType_Red == 1) iconGroup_Red.transform.position += iconMoveVec;
+        else if (spAttackType_Red == 2) iconGroup_Red.transform.position -= iconMoveVec;
+
+        if (spAttackType_Blue == 1) iconGroup_Blue.transform.position += iconMoveVec;
+        else if (spAttackType_Blue == 2) iconGroup_Blue.transform.position -= iconMoveVec;
     }
 
     void Update()
@@ -82,7 +86,7 @@ public class SpecialAttackChanger : MonoBehaviour,ISpAttackTypeGettable
             iconGroup_Red.transform.DOMove(iconGroup_Red.transform.position + (num * iconMoveVec), 0.5f)
                 .OnComplete(InputFlgChange);
             spAttackType_Red = (spAttackType_Red + (int)SPECIAL_ATTACK.COUNT) % (int)SPECIAL_ATTACK.COUNT;
-            //Debug.Log("red" + spAttackType_Red);
+            Debug.Log("red" + spAttackType_Red);
         }
         else
         {
@@ -93,7 +97,7 @@ public class SpecialAttackChanger : MonoBehaviour,ISpAttackTypeGettable
                 .OnComplete(InputFlgChange);
 
             spAttackType_Blue = (spAttackType_Blue + (int)SPECIAL_ATTACK.COUNT) % (int)SPECIAL_ATTACK.COUNT;
-            //Debug.Log("blue" + spAttackType_Blue);
+            Debug.Log("blue" + spAttackType_Blue);
         }
 
     }

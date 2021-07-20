@@ -29,6 +29,10 @@ public class SpecialAttackChanger : MonoBehaviour,ISpAttackTypeGettable
 
     private bool inputFlg = true;
 
+    private AudioSource audioSource;
+    [SerializeField] AudioClip changeSE;
+    [SerializeField] AudioClip scrollSE;
+
     private void Awake()
     {
         //if(PlayerPrefs.HasKey("spAttackType_Red") || PlayerPrefs.HasKey("spAttackType_Blue"))
@@ -39,6 +43,8 @@ public class SpecialAttackChanger : MonoBehaviour,ISpAttackTypeGettable
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         if (spAttackType_Red == 1) iconGroup_Red.transform.position += iconMoveVec;
         else if (spAttackType_Red == 2) iconGroup_Red.transform.position -= iconMoveVec;
 
@@ -54,6 +60,7 @@ public class SpecialAttackChanger : MonoBehaviour,ISpAttackTypeGettable
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             ChangeSelect();
+            audioSource.PlayOneShot(changeSE);
         }
 
         if(Input.GetKeyDown(KeyCode.UpArrow))
@@ -68,6 +75,8 @@ public class SpecialAttackChanger : MonoBehaviour,ISpAttackTypeGettable
 
     private void ChangeSelect()
     {
+        audioSource.PlayOneShot(scrollSE);
+
         isSelectRed = (isSelectRed) ? false : true;
 
 

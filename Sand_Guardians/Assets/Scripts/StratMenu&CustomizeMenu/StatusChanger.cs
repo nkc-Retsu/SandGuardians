@@ -16,7 +16,7 @@ public class StatusChanger : MonoBehaviour, ILevelGettable,IAddExp
     }
 
     [SerializeField] private GameObject cursorObj;
-    private static int exp = 10000;
+    private static int exp = 0;
     [SerializeField] private Text expTxt;
 
     private int stateNum;
@@ -66,9 +66,20 @@ public class StatusChanger : MonoBehaviour, ILevelGettable,IAddExp
     private void Update()
     {
         StateChange();
+
+        if(Input.GetKeyDown(KeyCode.F12))
+        {
+            DebugExpSet();
+        }
     }
 
     // デバッグ用
+    private void DebugExpSet()
+    {
+        exp += 10000;
+        expTxt.text = exp.ToString();
+    }
+
     private void StateChange()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))

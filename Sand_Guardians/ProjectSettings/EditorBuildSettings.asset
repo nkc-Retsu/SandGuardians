@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TitleScene.unity
+    path: Assets/Scenes/Game/TitleScene.unity
     guid: 0ab19f62a992e9249b5147db72c2c454
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
@@ -18,15 +18,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Test/GodoTest.unity
     guid: 6a7184cf896e50344948d615720bcd8e
   - enabled: 1
-    path: Assets/Scenes/ScoreScene.unity
+    path: Assets/Scenes/Game/ScoreScene.unity
     guid: 2541c834dd778554aaa3c2b9cd066672
   - enabled: 1
     path: Assets/Scenes/EnemyTestScene.unity
     guid: e3f2a9ac54ef73c45aecefbc10bab366
   - enabled: 1
-    path: Assets/Scenes/CustomizeScene.unity
+    path: Assets/Scenes/Game/CustomizeScene.unity
     guid: 9f745228c94b7274d81bfe4925d4137c
   - enabled: 1
     path: Assets/Scenes/Test/MiwaScene.unity
     guid: 8730e18542afe1d4e9424bc4338a8ad0
+  - enabled: 1
+    path: Assets/Scenes/Game/StartMenuScene.unity
+    guid: b4890687b13995140b9f375689bd1661
   m_configObjects: {}

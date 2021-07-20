@@ -9,28 +9,39 @@ public class LaserBeam : MonoBehaviour
     float colSizeX, colSizeY;
 
     GameObject player;
+    private Vector3 defaultScale;
+    private Vector2 defaultSRSize;
 
+    private LaserScaleChange laserScaleChange;
     public void SetPlayer(GameObject playerObj)
     {
         player = playerObj;
     }
 
     [SerializeField] float laserSpeed=15f;
-    float a = 1;
+    float sr_size_y = 1;
     void Start()
     {
+        laserScaleChange = GetComponent<LaserScaleChange>();
+
+        sr_size_y = 1;
+
         sr = GetComponent<SpriteRenderer>();
         boxCol2d = GetComponent<BoxCollider2D>();
 
+
         colSizeX = 1;
         colSizeY = 1;
+
+        defaultScale = transform.localScale;
+        defaultSRSize = sr.size;
 
     }
 
     void Update()
     {
-        a += Time.deltaTime*laserSpeed;
-        sr.size = new Vector2(1.5f, a);
+        sr_size_y += Time.deltaTime*laserSpeed;
+        sr.size = new Vector2(1.5f, sr_size_y);
         transform.position = player.transform.position;
         transform.localEulerAngles = player.transform.localEulerAngles;
 
@@ -41,7 +52,12 @@ public class LaserBeam : MonoBehaviour
 
         if(transform.localScale.x<=0)
         {
-            Destroy(gameObject);
+            laserScaleChange.Reset();
+
+            transform.localScale = defaultScale;
+            sr.size = new Vector2(defaultSRSize.x,1);
+            boxCol2d.size = new Vector2(1, 1);
+            gameObject.SetActive(false);
         }
     }
 }

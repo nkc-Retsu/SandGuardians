@@ -39,6 +39,7 @@ namespace Player
         {
             LASER,
             SPREAD,
+            SHIELD,
             COUNT
         }
 
@@ -59,6 +60,11 @@ namespace Player
                 shotSpeed = shotSpeedTbl[dbgShotSpeedLvl];
             }
 
+            if (gameObject.name == "Player_Red")
+            {
+                redFlg = true;
+            }
+
             iSpAttackTypeGettable = new SpecialAttackChanger();
             spAttackType = (redFlg) ? iSpAttackTypeGettable.GetSpAttackType_Red() : iSpAttackTypeGettable.GetSpAttackType_Blue();
 
@@ -69,6 +75,11 @@ namespace Player
                     break;
                 case ((int)SPECIAL.SPREAD):
                     gameObject.AddComponent<SpecialAttack_Spread>();
+                    break;
+                case ((int)SPECIAL.SHIELD):
+                    gameObject.AddComponent<SpecialAttack_Shield>();
+                    break;
+                default:
                     break;
             }
         }

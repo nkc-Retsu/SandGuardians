@@ -105,10 +105,10 @@ namespace Enemy
         // Start is called before the first frame update
         void Start()
         {
-            for (int i = 0; i < attackTable_Knight.Length; ++i)
-            {
-                attackTable_Knight[i] = attackTable_Knight[i-1] * magnification;
-            }
+            //for (int i = 0; i < attackTable_Knight.Length; ++i)
+            //{
+            //    attackTable_Knight[i] = attackTable_Knight[i-1] * magnification;
+            //}
 
 
             // コンポーネント取得

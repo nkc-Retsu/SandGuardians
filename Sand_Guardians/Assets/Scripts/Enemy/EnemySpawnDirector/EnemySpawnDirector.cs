@@ -92,24 +92,23 @@ namespace Enemy
 
 
         // スポーンレベル変数
-        private int spawnLevel = 1;
+        //private int spawnLevel = 1;
 
 
         // 時間変数
         private float time = 0;         // 時間計測用変数
         private float timeCount = 5;    // インターバル用変数
 
+        // 配列の要素数
         private int randMax;
+
+        // テキストで表示する値
+        private int textNum;
 
 
         // Start is called before the first frame update
         void Start()
         {
-            //for (int i = 0; i < attackTable_Knight.Length; ++i)
-            //{
-            //    attackTable_Knight[i] = attackTable_Knight[i-1] * magnification;
-            //}
-
 
             // コンポーネント取得
             sr_Porn = enemyPorn.GetComponent<SpriteRenderer>();
@@ -122,9 +121,9 @@ namespace Enemy
 
 
             // ステータスを初期化
-            EnemyStateChange_Porn  (attackTable_Porn[level],     hpTable_Porn[level],   speedTable_Porn[level],   pointTable_Porn[level]);
-            EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
-            EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
+            EnemyStateChange_Porn(hpTable_Porn[level], attackTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
+            EnemyStateChange_Lancer(hpTable_Lancer[level], attackTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+            EnemyStateChange_Knight(hpTable_Knight[level], attackTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
 
 
             // スプライトを変更
@@ -132,11 +131,14 @@ namespace Enemy
             sr_Lanacer.sprite = sr[1];
             sr_Knight.sprite  = sr[2];
 
-            
+            // 配列の要素数を増やす
             randMax = 4;
 
-            levelText.text = "LEVEL " + level.ToString("D") + 1;
-            Debug.Log(levelText);
+            // テキスト用変数に現在のレベルを代入
+            textNum = level + 1;
+
+            // テキストを表示
+            levelText.text = "LEVEL " + textNum;
         }
 
         // Update is called once per frame
@@ -145,6 +147,7 @@ namespace Enemy
             // メソッド呼び出し
             SpawnEnemy();
             LevelUP();
+
         }
 
 
@@ -154,79 +157,107 @@ namespace Enemy
         /// </summary>
         private void LevelUP()
         {
-            // スコアによってレベルが増える
+            // スコアによってレベルが増える処理
 
             // EnemyLancerを出現可能にする
             if (ScoreDirector.scorePoint >= (int)SpawnScore.spawnLancerScore && ScoreDirector.scorePoint < (int)SpawnScore.spawnKnightScore)
             {
-                spawnLevel = 2;
+                // 出現可能にする
+                //spawnLevel = 2;
+
+                // ランダム最大値を変更
                 randMax    = 8;
+
+                // 出現スパンを変更
                 timeCount  = 3f;
 
             }
             // EnemyKnightを出現可能にする
             else if (ScoreDirector.scorePoint >= (int)SpawnScore.spawnKnightScore && ScoreDirector.scorePoint < (int)SpawnScore.spawnBossScore)
             {
-                spawnLevel = 3;
+                // 出現可能にする
+                // spawnLevel = 3;
+
+                // ランダム最大値を変更
                 randMax = 10;
+
+                // 出現スパンを変更
                 timeCount = 2f;
 
             }
-            // EnemyBossを出現可能にする
+            // EnemyBossを出現可能にする(いつか追加するとき用)
             else if (ScoreDirector.scorePoint >= (int)SpawnScore.spawnBossScore && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_1)
             {
+                // 出現スパンを変更
                 timeCount = 1f;
             }
 
 
 
-            // LevelUP
-            // Hard_Level_1
+            // スコアによってLevelUPしていく処理
             if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_1 && ScoreDirector.scorePoint <=(int)SpawnScore.HardScore_Level_2)
             {
+                // 出現スパンを変更
                 timeCount = 1.5f;
             }
             else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_2 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_3)
             {
+                // 現在のレベルがTableLevelより小さい場合
                  if(level < levelTable[1])
                 {
                     Debug.Log("レベル2");
+
+                    // 現在のレベルを代入
                     level = levelTable[1];
+
+                    // 敵が出てくるスパンを変更
                     timeCount = 1.5f;
 
+                    // 敵のステータスを変更
                     EnemyStateChange_Porn(  hpTable_Porn[level],   attackTable_Porn[level],   speedTable_Porn[level],   pointTable_Porn[level]);
                     EnemyStateChange_Lancer(hpTable_Lancer[level], attackTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
                     EnemyStateChange_Knight(hpTable_Knight[level], attackTable_Knight[level] ,speedTable_Knight[level], pointTable_Knight[level]);
 
-
+                    // Spriteを変更
                     sr_Porn.sprite    = sr[3];
                     sr_Lanacer.sprite = sr[4];
                     sr_Knight.sprite  = sr[5];
 
+                    // テキスト用変数に現在のレベルを代入
+                    textNum = level + 1;
 
-                    levelText.text = "LEVEL " + level + 1;
-                    Debug.Log(level);
-
+                    // テキストを表示
+                    levelText.text = "LEVEL " + textNum;
                 }
             }
             else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_3 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_4)
             {
+                // 現在のレベルがTableLevelより小さい場合
                 if (level < levelTable[2])
                 {
                     Debug.Log("レベル3");
+
+                    // 現在のレベルを代入
                     level = levelTable[2];
+
+                    // 敵が出てくるスパンを変更
                     timeCount = 1f;
 
-                    EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
-                    EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
-                    EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
+                    // 敵のステータスを変更
+                    EnemyStateChange_Porn(hpTable_Porn[level], attackTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
+                    EnemyStateChange_Lancer(hpTable_Lancer[level], attackTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+                    EnemyStateChange_Knight(hpTable_Knight[level], attackTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
 
-
+                    // Spriteを変更
                     sr_Porn.sprite    = sr[6];
                     sr_Lanacer.sprite = sr[7];
                     sr_Knight.sprite  = sr[8];
 
-                    levelText.text = "LEVEL " + level.ToString() + 1;
+                    // テキスト用変数に現在のレベルを代入
+                    textNum = level + 1;
+
+                    // テキストを表示
+                    levelText.text = "LEVEL " + textNum;
 
                 }
             }
@@ -237,17 +268,17 @@ namespace Enemy
                     Debug.Log("レベル4");
                     level = levelTable[3];
 
-                    EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
-                    EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
-                    EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
+                    EnemyStateChange_Porn(hpTable_Porn[level], attackTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
+                    EnemyStateChange_Lancer(hpTable_Lancer[level], attackTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+                    EnemyStateChange_Knight(hpTable_Knight[level], attackTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
 
 
                     sr_Porn.sprite    =  sr[9];
                     sr_Lanacer.sprite = sr[10];
                     sr_Knight.sprite  = sr[11];
 
-                    levelText.text = "LEVEL " + level.ToString() + 1;
-
+                    textNum = level + 1;
+                    levelText.text = "LEVEL " + textNum;
                 }
 
             }
@@ -258,17 +289,17 @@ namespace Enemy
                     Debug.Log("レベル5");
                     level = levelTable[4];
 
-                    EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
-                    EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
-                    EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
+                    EnemyStateChange_Porn(hpTable_Porn[level], attackTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
+                    EnemyStateChange_Lancer(hpTable_Lancer[level], attackTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+                    EnemyStateChange_Knight(hpTable_Knight[level], attackTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
 
 
                     sr_Porn.sprite    = sr[12];
                     sr_Lanacer.sprite = sr[13];
                     sr_Knight.sprite  = sr[14];
 
-                    levelText.text = "LEVEL " + level.ToString() + 1;
-
+                    textNum = level + 1;
+                    levelText.text = "LEVEL " + textNum;
                 }
             }
             else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_6 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_7)
@@ -278,17 +309,17 @@ namespace Enemy
                     Debug.Log("レベル6");
                    level = levelTable[5];
 
-                    EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
-                    EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
-                    EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
+                    EnemyStateChange_Porn(hpTable_Porn[level], attackTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
+                    EnemyStateChange_Lancer(hpTable_Lancer[level], attackTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+                    EnemyStateChange_Knight(hpTable_Knight[level], attackTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
 
 
                     sr_Porn.sprite    = sr[15];
                     sr_Lanacer.sprite = sr[16];
                     sr_Knight.sprite  = sr[17];
 
-                    levelText.text = "LEVEL " + level.ToString() + 1;
-
+                    textNum = level + 1;
+                    levelText.text = "LEVEL " + textNum;
                 }
 
             }
@@ -299,18 +330,17 @@ namespace Enemy
                     Debug.Log("レベル7");
                     level = levelTable[6];
 
-                    
-                    EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
-                    EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
-                    EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
 
+                    EnemyStateChange_Porn(hpTable_Porn[level], attackTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
+                    EnemyStateChange_Lancer(hpTable_Lancer[level], attackTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+                    EnemyStateChange_Knight(hpTable_Knight[level], attackTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
 
                     sr_Porn.sprite    = sr[18];
                     sr_Lanacer.sprite = sr[19];
                     sr_Knight.sprite  = sr[20];
 
-
-                    levelText.text = "LEVEL " + level.ToString() + 1;
+                    textNum = level + 1;
+                    levelText.text = "LEVEL " + textNum;
 
                 }
             }
@@ -322,17 +352,17 @@ namespace Enemy
                     level = levelTable[7];
                     timeCount = 0.5f;
 
-                    EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
-                    EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
-                    EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
+                    EnemyStateChange_Porn(hpTable_Porn[level], attackTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
+                    EnemyStateChange_Lancer(hpTable_Lancer[level], attackTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+                    EnemyStateChange_Knight(hpTable_Knight[level], attackTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
 
 
                     sr_Porn.sprite    = sr[21];
                     sr_Lanacer.sprite = sr[22];
                     sr_Knight.sprite  = sr[23];
 
-                    levelText.text = "LEVEL " + level.ToString() + 1;
-
+                    textNum = level + 1;
+                    levelText.text = "LEVEL " + textNum;
                 }
             }
         }
@@ -416,7 +446,7 @@ namespace Enemy
         {
             enemyStatus_Porn.attackPower = attack;
             enemyStatus_Porn.speed       = speed;
-            enemyStatus_Porn.attackPower = hp;
+            enemyStatus_Porn.hp          = hp;
             enemyStatus_Porn.enemyPoint  = point;
         }
 
@@ -439,14 +469,15 @@ namespace Enemy
         }
 
 
-        //一律ｎ倍
-        //private int SetLevel(int[] gotArray)
-        //{
-        //    for(int i = 0; i < gotArray.Length; ++i)
-        //    {
-
-        //    }
-        //}
+        // デバッグ用入力処理
+        private void DebugInputer()
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                ScoreDirector.scorePoint += 500;
+            }
+        }
+        
     }
 
 }

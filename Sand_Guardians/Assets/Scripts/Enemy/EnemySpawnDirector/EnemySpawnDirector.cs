@@ -21,7 +21,7 @@ namespace Enemy
             spawnKnightScore      =  1000,
             spawnBossScore        =  2000,
             HardScore_Level_1     =  5000,
-            HardScore_Level_2     =  8000,
+            HardScore_Level_2     =  7000,
             HardScore_Level_3     = 10000,
             HardScore_Level_4     = 12000,
             HardScore_Level_5     = 14000,
@@ -39,14 +39,46 @@ namespace Enemy
         [SerializeField] private GameObject enemyKnight;
 
         // ScriptableOject取得用変数
-        [SerializeField] private EnemyStatus enemyStatus;
+        [SerializeField] private EnemyStatus enemyStatus_Porn;
+        [SerializeField] private EnemyStatus enemyStatus_Lanacer;
+        [SerializeField] private EnemyStatus enemyStatus_Knight;
 
+
+        // Sprite
+        private SpriteRenderer sr_Porn;   
+        private SpriteRenderer sr_Lanacer;   
+        private SpriteRenderer sr_Knight;   
 
         // lerpのオブジェクトを取得する配列
         [SerializeField] private GameObject[] lerpObj;
 
+
+
+        // PornのLevel別のステータス
+        [SerializeField] private int[]   attackTable_Porn   = { };  
+        [SerializeField] private int[]   hpTable_Porn       = { };
+        [SerializeField] private float[] speedTable_Porn    = { };
+        [SerializeField] private int[]   pointTable_Porn    = { };
+
+        // LancerのLevel別のステータス
+        [SerializeField] private int[]   attackTable_Lancer = { };
+        [SerializeField] private int[]   hpTable_Lancer     = { };
+        [SerializeField] private float[] speedTable_Lancer  = { };
+        [SerializeField] private int[]   pointTable_Lancer  = { };
+
+        // KnightのLevel別のステータス
+        [SerializeField] private int[]   attackTable_Knight = { };
+        [SerializeField] private int[]   hpTable_Knight     = { };
+        [SerializeField] private float[] speedTable_Knight  = { };
+        [SerializeField] private int[]   pointTable_Knight  = { };
+
+
+        // レベル管理配列
+        private int[] levelTable = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        private int level;
+
         // スポーンレベル変数
-        [SerializeField] private int spawnLevel = 1;
+        private int spawnLevel = 1;
 
 
         // 時間変数
@@ -59,6 +91,19 @@ namespace Enemy
         // Start is called before the first frame update
         void Start()
         {
+
+            sr_Porn    = GetComponent<SpriteRenderer>();
+            sr_Lanacer = GetComponent<SpriteRenderer>();
+            sr_Knight  = GetComponent<SpriteRenderer>();
+
+
+            // レベル変数を0にする
+            int level = levelTable[0];
+
+            EnemyStateChange_Porn  (attackTable_Porn[level],     hpTable_Porn[level],   speedTable_Porn[level],   pointTable_Porn[level]);
+            EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+            EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
+
         }
 
         // Update is called once per frame
@@ -68,6 +113,7 @@ namespace Enemy
             SpawnEnemy();
             LevelUP();
         }
+
 
 
         /// <summary>
@@ -96,104 +142,137 @@ namespace Enemy
             {
                 spawnLevel = 4;
                 timeCount = 1f;
-
             }
+
+
+
+            // LevelUP
             // Hard_Level_1
-            else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_1 && ScoreDirector.scorePoint <=(int)SpawnScore.HardScore_Level_2)
+            if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_1 && ScoreDirector.scorePoint <=(int)SpawnScore.HardScore_Level_2)
             {
-                timeCount = 0.5f;
+                Debug.Log("レベル1");
+                timeCount = 2f;
             }
             else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_2 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_3)
             {
-                 if(ScoreDirector.scorePoint == (int)SpawnScore.HardScore_Level_2)
+                 if(level < levelTable[1])
                 {
-                    enemyStatus.attackPower += 10;
-                    enemyStatus.hp          += 10;
-                    enemyStatus.enemyPoint  += 10;
+                    Debug.Log("レベル2");
+                    level = levelTable[1];
+
+                    EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
+                    EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+                    EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
+
                 }
             }
             else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_3 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_4)
             {
-                if (ScoreDirector.scorePoint == (int)SpawnScore.HardScore_Level_3)
+                if (level < levelTable[2])
                 {
-                    enemyStatus.attackPower += 10;
-                    enemyStatus.hp += 10;
-                    enemyStatus.enemyPoint += 10;
-                }
+                    Debug.Log("レベル3");
+                    level = levelTable[2];
 
+                    EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
+                    EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+                    EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
+
+                }
             }
             else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_4 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_5)
             {
-                if (ScoreDirector.scorePoint == (int)SpawnScore.HardScore_Level_4)
+                if (level < levelTable[3])
                 {
-                    enemyStatus.attackPower += 10;
-                    enemyStatus.hp += 10;
-                    enemyStatus.enemyPoint += 10;
+                    Debug.Log("レベル4");
+                    level = levelTable[3];
+
+                    EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
+                    EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+                    EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
+
                 }
 
             }
             else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_5 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_6)
             {
-                if (ScoreDirector.scorePoint == (int)SpawnScore.HardScore_Level_5)
+                if (level < levelTable[4])
                 {
-                    enemyStatus.attackPower += 10;
-                    enemyStatus.hp += 10;
-                    enemyStatus.enemyPoint += 10;
-                }
+                    Debug.Log("レベル5");
+                    level = levelTable[4];
 
+                    EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
+                    EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+                    EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
+
+                }
             }
             else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_6 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_7)
             {
-                if (ScoreDirector.scorePoint == (int)SpawnScore.HardScore_Level_6)
+                if (level < levelTable[5])
                 {
-                    enemyStatus.attackPower += 10;
-                    enemyStatus.hp += 10;
-                    enemyStatus.enemyPoint += 10;
+                    Debug.Log("レベル6");
+                   level = levelTable[5];
+
+                    EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
+                    EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+                    EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
+
                 }
 
             }
             else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_7 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_8)
             {
-                if (ScoreDirector.scorePoint == (int)SpawnScore.HardScore_Level_7)
+                if (level < levelTable[6])
                 {
-                    enemyStatus.attackPower += 10;
-                    enemyStatus.hp += 10;
-                    enemyStatus.enemyPoint += 10;
-                }
+                    Debug.Log("レベル7");
+                    level = levelTable[6];
 
+                    EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
+                    EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+                    EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
+
+                }
             }
             else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_8 && ScoreDirector.scorePoint <= (int)SpawnScore.HardScore_Level_9)
             {
-                if (ScoreDirector.scorePoint == (int)SpawnScore.HardScore_Level_8)
+                if (level < levelTable[7])
                 {
-                    enemyStatus.attackPower += 10;
-                    enemyStatus.hp += 10;
-                    enemyStatus.enemyPoint += 10;
-                }
+                    Debug.Log("レベル8");
+                    level = levelTable[7];
 
+                    EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
+                    EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+                    EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
+
+                }
             }
             else if (ScoreDirector.scorePoint >= (int)SpawnScore.HardScore_Level_9 && ScoreDirector.scorePoint <= (int)SpawnScore.The_beginning_of_hell)
             {
-                if (ScoreDirector.scorePoint == (int)SpawnScore.HardScore_Level_9)
+                if (level < levelTable[8])
                 {
-                    enemyStatus.attackPower += 10;
-                    enemyStatus.hp += 10;
-                    enemyStatus.enemyPoint += 10;
-                }
+                    Debug.Log("レベル9");
+                    level = levelTable[8];
 
+                    EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
+                    EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+                    EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
+
+                }
             }
             else if (ScoreDirector.scorePoint >= (int)SpawnScore.The_beginning_of_hell)
             {
-                if (ScoreDirector.scorePoint == (int)SpawnScore.The_beginning_of_hell)
+                if (level < levelTable[9])
                 {
-                    enemyStatus.attackPower += 100;
-                    enemyStatus.hp += 10;
-                    enemyStatus.enemyPoint += 10;
+                    Debug.Log("地獄の始まり");
+                    level = levelTable[10];
+
+                    EnemyStateChange_Porn(attackTable_Porn[level], hpTable_Porn[level], speedTable_Porn[level], pointTable_Porn[level]);
+                    EnemyStateChange_Lancer(attackTable_Lancer[level], hpTable_Lancer[level], speedTable_Lancer[level], pointTable_Lancer[level]);
+                    EnemyStateChange_Knight(attackTable_Knight[level], hpTable_Knight[level], speedTable_Knight[level], pointTable_Knight[level]);
+
                 }
 
             }
-
-
 
         }
 
@@ -261,6 +340,35 @@ namespace Enemy
 
         }
 
+
+
+
+        // Pornのステータスを変更
+        private void EnemyStateChange_Porn(int hp, int attack, float speed,int point)
+        {
+            enemyStatus_Porn.attackPower = attack;
+            enemyStatus_Porn.speed       = speed;
+            enemyStatus_Porn.attackPower = hp;
+            enemyStatus_Porn.enemyPoint = point;
+        }
+
+        // Lancerのステータスを変更
+        private void EnemyStateChange_Lancer(int hp, int attack, float speed, int point)
+        {
+            enemyStatus_Lanacer.attackPower = attack;
+            enemyStatus_Lanacer.speed = speed;
+            enemyStatus_Lanacer.hp = hp;
+            enemyStatus_Lanacer.enemyPoint = point;
+        }
+
+        // Knightのステータスを変更
+        private void EnemyStateChange_Knight(int hp, int attack, float speed, int point)
+        {
+            enemyStatus_Knight.attackPower = attack;
+            enemyStatus_Knight.speed = speed;
+            enemyStatus_Knight.hp = hp;
+            enemyStatus_Knight.enemyPoint = point;
+        }
     }
 
 }

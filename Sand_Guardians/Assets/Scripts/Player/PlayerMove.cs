@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Bridge;
 
 namespace Player
 {
@@ -26,6 +27,7 @@ namespace Player
         void Start()
         {
             inputer = GetComponent<IInputer>();
+            speed = GetComponent<IStatusGettable>().GetSpeed();
 
             Array.Resize(ref turnPointDistances, turnPoints.Count);
 

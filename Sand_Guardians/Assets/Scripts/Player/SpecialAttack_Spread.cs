@@ -9,15 +9,14 @@ namespace Player
     {
         IInputer inputer;
 
-        [SerializeField] private bool redFlg;
+        private bool redFlg = false;
         private BulletPool bulletPool;
-        [SerializeField] private GameObject poolObj;
+        private GameObject poolObj;
 
-        [SerializeField] GameObject spreadBullet; // ägéUíe
         private Vector3 offsetPos; // î≠éÀà íu
         private float offsetRate = 0.2f; // î≠éÀà íuí≤êÆóp
 
-        [SerializeField] private float angle = 0; // î≠éÀäpìx
+        private float angle = 60; // î≠éÀäpìx
         [SerializeField] private int shotCount = 11; // íeêî
 
         GameObject sPManager;
@@ -28,11 +27,15 @@ namespace Player
         private AudioSource audioSource;
         [SerializeField] AudioClip spreadShotSound;
 
-        [SerializeField] private int damage = 30;
-
         void Start()
         {
-            
+            poolObj = GameObject.Find("PoolObj");
+
+            if (gameObject.name == "Player_Red")
+            {
+                redFlg = true;
+            }
+
             inputer = GetComponent<IInputer>();
             bulletPool = poolObj.GetComponent<BulletPool>();
             sPManager = GameObject.Find("SPManager");
@@ -45,7 +48,14 @@ namespace Player
 
         void Update()
         {
-            if (inputer.SpecialAttack_Blue()) SpreadBullet();
+            if (redFlg)
+            {
+                if (inputer.SpecialAttack_Red()) SpreadBullet();
+            }
+            else
+            {
+                if (inputer.SpecialAttack_Blue()) SpreadBullet();
+            }
         }
 
         private void SpreadBullet()
@@ -60,8 +70,8 @@ namespace Player
                 {
                     GameObject bullet;
                     bullet = (redFlg) ? bulletPool.GetRedBullet() : bulletPool.GetBlueBullet();
+                    Debug.Log("aaaaa");
                     bullet.SetActive(true);
-                    bullet.GetComponent<IDamageSettable>().SetDamage(damage);
                     bullet.transform.position = transform.position + offsetPos;
                     bullet.transform.localEulerAngles = rotate;
                     //Instantiate(spreadBullet, this.transform.position + offsetPos, Quaternion.Euler(rotate));
